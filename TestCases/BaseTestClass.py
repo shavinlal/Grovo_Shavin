@@ -22,7 +22,7 @@ search_field.submit()
 lists= driver.find_elements_by_class_name("_Rm")
 
 # get the number of elements found
-print (“Found “ + str(len(lists)) + “searches:”)
+print (“Found searches”)
 
 # iterate through each element and print the text that is
 # name of the search
