@@ -1,8 +1,13 @@
+machine:
+  python:
+    version: 2.7.9
+
+dependencies:
+  override:
+    - pip install -r requirements.txt
+
 test:
   override:
-    - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
-general:
-  artifacts:
-    - "robot_results"
+    - nosetests TestCases/BaseTestClass.py
     
     
