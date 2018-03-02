@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 # create a new Firefox session
-driver=webdriver.Chrome("chromedriver")
+driver=webdriver.Chrome("TestCases/chromedriver")
 driver.implicitly_wait(30)
 driver.maximize_window()
 
