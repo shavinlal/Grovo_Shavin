@@ -1,6 +1,6 @@
 test:
   override:
-    - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./selenium
+    - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
 general:
   artifacts:
     - "robot_results"
