@@ -12,7 +12,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 
-driver=webdriver.Chrome('chromedriver')
+driver=webdriver.Chrome("/Users/admin/Documents/chromedriver")
 
 class BaseTestClass:
     
@@ -23,7 +23,7 @@ class BaseTestClass:
         driver.maximize_window()
         
         print "Reading data from excel sheet"
-        book=xlrd.open_workbook(os.path.join('./TestData.xlsx'))
+        book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         
         # print number of sheets
         print("Number of WorkSheets :")
@@ -75,3 +75,9 @@ class BaseTestClass:
         
         print "Successfully Loged Into Grovo Application"
         time.sleep(5)
+        
+        
+
+
+
+    
