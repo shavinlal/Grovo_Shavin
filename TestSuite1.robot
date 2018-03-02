@@ -1,23 +1,23 @@
 *** Settings ***
 Library   TestCases/BaseTestClass.py
-Library   TestCases/CreateCreator.py
-Library   TestCases/CreateLearner.py
-Library   TestCases/CreateLearnerAdministrator.py
-Library   TestCases/CreateMasterAdmin.py
+Library   TestCases/CreateTagDocLesson.py
+Library   TestCases/CreateTagImageLesson.py
+Library   TestCases/CreateTagLessonCombinedLesson.py
+Library   TestCases/CreateTagLessonExplainAconcept.py
 
 
 *** Test Cases ***
 TC0 - User Login
     User Login
 
-TC1 - CreateCreator
-    Create Creator User And Validation
-
-TC2 - CreateLearner
-    Create Learner User And Validation
-
-TC3 - CreateLearnerAdministrator
-    Create Learner Admin User And Validation
+TC1 - CreateTagDocLesson
+    Creating Tag For Document Lesson
     
-TC4 - CreateMasterAdmin
-    Create Master Admin User And Validation
+TC2 - CreateTagImageLesson
+    Create Tag For Image Lesson
+    
+TC3 - CreateTagLessonCombinedLesson
+    Create Tag For Combined Lesson
+    
+TC4 - CreateTagLessonExplainAconcept
+    Create Tag For Lesson Explain A Concept
