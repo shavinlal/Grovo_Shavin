@@ -1,6 +1,6 @@
   test:
     override:
-      - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./AutomationTestcase.postman_collection.JSON.parse
+      - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuit1.robot
   general:
     artifacts:
       - "robot_results" 
