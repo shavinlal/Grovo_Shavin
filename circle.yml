@@ -1,16 +1,3 @@
-version: 2
-  commit-workflow:
-    jobs:
-      - build 
-  scheduled-workflow:
-    triggers:
-      - schedule:
-          cron: "0 5 * * *"
-          filters:
-            branches:
-              only: try-schedule-workflow
-
-  
   test:
     override:
       - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
