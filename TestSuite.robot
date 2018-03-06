@@ -1,340 +1,349 @@
 *** Settings ***
-Library   TestCases/BaseTestClass.py
+Library   BaseTestClass.py
 
-Library   TestCases/BlankLessonFive.py
-Library   TestCases/BlankLessonFiveTwo.py
-Library   TestCases/BlankLessonOne.py
-Library   TestCases/BlankLessonTen.py
-Library   TestCases/BlankLessonTwo.py
-Library   TestCases/LessonExplainAConcept.py
-Library   TestCases/TeachASkill.py
-
-
-Library   TestCases/CreateCreator.py
-Library   TestCases/CreateLearner.py
-Library   TestCases/CreateLearnerAdministrator.py
-Library   TestCases/CreateMasterAdmin.py
-Library   TestCases/CreateTagDocLesson.py
-Library   TestCases/CreateTagImageLesson.py
-Library   TestCases/CreateTagLessonCombinedLesson.py
-Library   TestCases/CreateTagLessonExplainAconcept.py
-Library   TestCases/CreateTagLessonIntroduceAtopic.py
-Library   TestCases/CreateTagLessonLimitedmultiplecardlesson_1.py
-Library   TestCases/CreateTagLessonLimitedmultiplecardlesson_2.py
-Library   TestCases/CreateTagLessonLimitedmultiplecardlesson_3.py
-Library   TestCases/CreateTagLessonMultiplecardlesson.py
-Library   TestCases/CreateTagLessonPowerpoint.py
-Library   TestCases/CreateTagLessonScorm.py
-Library   TestCases/CreateTagLessonTeachAskill.py
-Library   TestCases/CreateTagLessonTextLesson.py
-Library   TestCases/CreateTagQuesLesson.py
-Library   TestCases/CreateTagTrackLessonDocument.py
-Library   TestCases/CreateTagTrackLessonFiveVideoDocumentQuestion.py
-Library   TestCases/CreateTagTrackLessonImage.py
-Library   TestCases/CreateTagTrackLessonOneTextImageVideoDocumentQuestion.py
-Library   TestCases/CreateTagTrackLessonQuestion.py
-Library   TestCases/CreateTagTrackLessonTenTextVideoQuestion.py
-Library   TestCases/CreateTagTrackLessonTwoTextImageVideoDocumentQuestion.py
-Library   TestCases/CreateTagTrackLessonVideo.py
-Library   TestCases/CreateTagTrackWithTwolessons_1_2.py
-Library   TestCases/CreateTagTrackWithTwolessons_2_3.py
-Library   TestCases/CreateTagTrackWithfourlessons10_12_3.py
-Library   TestCases/CreateTagTrackWithfourlessons4_5_6_7.py
-Library   TestCases/CreateTagTrackWithfourlessons78910.py
-Library   TestCases/CreateTagTrackWithonelesson_9.py
-Library   TestCases/CreateTagTrackWiththreelessons_3_4_5.py
-Library   TestCases/CreateTagTrackWiththreelessons_5_6_7.py
-Library   TestCases/CreateTagTracklessonFiveTextImageQuestion.py
-Library   TestCases/CreateTagVideoLesson.py
-Library   TestCases/UserAttributeCheckboxWithReq.py
-Library   TestCases/UserAttributeWithoutCheckbox.py
-Library   TestCases/UserAttributeDateWithReq.py
-Library   TestCases/UserAttributeDateWithoutReq.py
-Library   TestCases/UserAttributeListWithReq.py
-Library   TestCases/UserAttributeListWithoutReq.py
-Library   TestCases/UserAttributeNumWithReq.py
-Library   TestCases/UserAttributeNumWithoutReq.py
-Library   TestCases/UserAttributeTextWithReq.py
-Library   TestCases/UserAttributeTextWithoutReq.py
-Library   TestCases/UserAttributeUserReferenceWithReq.py
-Library   TestCases/UserAttributeUserReferenceWithoutReq.py
-Library   TestCases/UserAttributeWithEmail.py
-Library   TestCases/UserAttributeWithoutEmail.py
+Library   BlankLessonFive.py
+Library   BlankLessonFiveTwo.py
+Library   BlankLessonOne.py
+Library   BlankLessonTen.py
+Library   BlankLessonTwo.py
+Library   LessonExplainAConcept.py
+Library   TeachASkill.py
 
 
+Library   CreateCreator.py
+Library   CreateLearner.py
+Library   CreateLearnerAdministrator.py
+Library   CreateMasterAdmin.py
+Library   CreateTagDocLesson.py
+Library   CreateTagImageLesson.py
+Library   CreateTagLessonCombinedLesson.py
+Library   CreateTagLessonExplainAconcept.py
+Library   CreateTagLessonIntroduceAtopic.py
+Library   CreateTagLessonLimitedmultiplecardlesson_1.py
+Library   CreateTagLessonLimitedmultiplecardlesson_2.py
+Library   CreateTagLessonLimitedmultiplecardlesson_3.py
+Library   CreateTagLessonMultiplecardlesson.py
+Library   CreateTagLessonPowerpoint.py
+Library   CreateTagLessonScorm.py
+Library   CreateTagLessonTeachAskill.py
+Library   CreateTagLessonTextLesson.py
+Library   CreateTagQuesLesson.py
+Library   CreateTagTrackLessonDocument.py
+Library   CreateTagTrackLessonFiveVideoDocumentQuestion.py
+Library   CreateTagTrackLessonImage.py
+Library   CreateTagTrackLessonOneTextImageVideoDocumentQuestion.py
+Library   CreateTagTrackLessonQuestion.py
+Library   CreateTagTrackLessonTenTextVideoQuestion.py
+Library   CreateTagTrackLessonTwoTextImageVideoDocumentQuestion.py
+Library   CreateTagTrackLessonVideo.py
+Library   CreateTagTrackWithTwolessons_1_2.py
+Library   CreateTagTrackWithTwolessons_2_3.py
+Library   CreateTagTrackWithfourlessons10_12_3.py
+Library   CreateTagTrackWithfourlessons4_5_6_7.py
+Library   CreateTagTrackWithfourlessons78910.py
+Library   CreateTagTrackWithonelesson_9.py
+Library   CreateTagTrackWiththreelessons_3_4_5.py
+Library   CreateTagTrackWiththreelessons_5_6_7.py
+Library   CreateTagTracklessonFiveTextImageQuestion.py
+Library   CreateTagVideoLesson.py
+Library   UserAttributeCheckboxWithReq.py
+Library   UserAttributeWithoutCheckbox.py
+Library   UserAttributeDateWithReq.py
+Library   UserAttributeDateWithoutReq.py
+Library   UserAttributeListWithReq.py
+Library   UserAttributeListWithoutReq.py
+Library   UserAttributeNumWithReq.py
+Library   UserAttributeNumWithoutReq.py
+Library   UserAttributeTextWithReq.py
+Library   UserAttributeTextWithoutReq.py
+Library   UserAttributeUserReferenceWithReq.py
+Library   UserAttributeUserReferenceWithoutReq.py
+Library   UserAttributeWithEmail.py
+Library   UserAttributeWithoutEmail.py
 
-Library   TestCases/LessonCreateImage.py
-Library   TestCases/LessonCreateVideo.py
-Library   TestCases/TrackWithDocumentLesson.py
-Library   TestCases/TrackWithImageLesson.py
-Library   TestCases/TrackWithQuestionLesson.py
-Library   TestCases/TrackWithTextLesson.py
-Library   TestCases/TrackWithTxtImgQueLesson.py
-Library   TestCases/TrackWithVideoLesson.py
-Library   TestCases/TrackWithVidLessonDocLesssonQuesLesson.py
-Library   TestCases/LessonCreateDocument.py
-Library   TestCases/LessonCreateQuestion.py
-Library   TestCases/LessonCreateText.py
-Library   TestCases/TrackWithImgLessonVidLesson.py
-Library   TestCases/TrackWithTxtLessonImgLesson.py
-Library   TestCases/TrackWithTxtVidQueLesson.py
-Library   TestCases/TrackWithVidDocQueLesson.py
-Library   TestCases/TrackWithAllCardsOne.py
-Library   TestCases/TrackWithAllCardsTwoTimes.py
-Library   TestCases/TrackWithFourLessons.py
-Library   TestCases/TrackWithFourLessonsDifferentCombiOfLessons.py
-Library   TestCases/TrackWithFourLessonsDifferentCombiOfLessons2.py
-Library   TestCases/TrackWithQuesLesssonAllCards1timeAllCards2TimeLessons.py
+
+
+Library   LessonCreateImage.py
+Library   LessonCreateVideo.py
+Library   TrackWithDocumentLesson.py
+Library   TrackWithImageLesson.py
+Library   TrackWithQuestionLesson.py
+Library   TrackWithTextLesson.py
+Library   TrackWithTxtImgQueLesson.py
+Library   TrackWithVideoLesson.py
+Library   TrackWithVidLessonDocLesssonQuesLesson.py
+Library   LessonCreateDocument.py
+Library   LessonCreateQuestion.py
+Library   LessonCreateText.py
+Library   TrackWithImgLessonVidLesson.py
+Library   TrackWithTxtLessonImgLesson.py
+Library   TrackWithTxtVidQueLesson.py
+Library   TrackWithVidDocQueLesson.py
+Library   TrackWithAllCardsOne.py
+Library   TrackWithAllCardsTwoTimes.py
+Library   TrackWithFourLessons.py
+Library   TrackWithFourLessonsDifferentCombiOfLessons.py
+Library   TrackWithFourLessonsDifferentCombiOfLessons2.py
+Library   TrackWithQuesLesssonAllCards1timeAllCards2TimeLessons.py
+
+Library   Delete_Tags_Attributes_Lessons.py
+
+Library   DeleteLesson.py
 
 
 *** Test Cases ***
 TC0 - User Login
     User Login
-
-TC1 - BlankLessonFive
-    Blank Lesson Five Main
+ 
+TC1 - Delete_Tags_Attributes_Lessons
+    Main Delete All
     
-TC2 - BlankLessonFiveTwo
+TC2 - BlankLessonFive
+    Blank Lesson Five Main   
+
+TC3 - BlankLessonFiveTwo
     Blank Lesson Five Two Main
     
-TC3 - BlankLessonOne
+TC4 - BlankLessonOne
     Blank Lesson One Main
     
-TC4 - BlankLessonTen
+TC5 - BlankLessonTen
     Blank Lesson Ten Main
     
-TC5 - BlankLessonTwo
+TC6 - BlankLessonTwo
     Blank Lesson Two Main  
     
-TC6 - LessonExplainAConcept
+TC7 - LessonExplainAConcept
     Lesson Explain A Concept Main
     
-TC7 - TeachASkill
+TC8 - TeachASkill
     Teach A Skill Main
     
     
     
-TC8 - CreateCreator
+TC9 - CreateCreator
     Create Creator User And Validation
 
-TC9 - CreateLearner
+TC10 - CreateLearner
     Create Learner User And Validation
 
-TC10 - CreateLearnerAdministrator
+TC11 - CreateLearnerAdministrator
     Create Learner Admin User And Validation
     
-TC11 - CreateMasterAdmin
+TC12 - CreateMasterAdmin
     Create Master Admin User And Validation
  
-TC12 - UserAttributeListWithReq
+TC13 - UserAttributeListWithReq
     Create List Attribute With Required Field
     
-TC13 - UserAttributeListWithoutReq
+TC14 - UserAttributeListWithoutReq
     Create List Attribute Without Required Field
            
-TC14 - UserAttributeNumWithReq
+TC15 - UserAttributeNumWithReq
     Create Number Attribute With Req
     
-TC15 - UserAttributeNumWithoutReq
+TC16 - UserAttributeNumWithoutReq
     Create Number Attribute Without Req
     
-TC16 - UserAttributeTextWithReq
+TC17 - UserAttributeTextWithReq
     Create Text Attribute With Req
     
-TC17 - UserAttributeTextWithoutReq
+TC18 - UserAttributeTextWithoutReq
     Create Text Attribute Without Req
     
-TC18 - UserAttributeCheckboxWithReq
+TC19 - UserAttributeCheckboxWithReq
     Create Check Box Attribute With Req
     
-TC19 - UserAttributeWithoutCheckbox
+TC20 - UserAttributeWithoutCheckbox
     Create Check Box Attribute Without Req
     
-TC20 - UserAttributeDateWithReq
+TC21 - UserAttributeDateWithReq
     Create Date Attribute With Req
     
-TC21 - UserAttributeDateWithoutReq
+TC22 - UserAttributeDateWithoutReq
     Create Date Attribute Without Req
     
-TC22 - UserAttributeWithEmail
+TC23 - UserAttributeWithEmail
     Create Email Attribute With Req
     
-TC23 - UserAttributeWithoutEmail
+TC24 - UserAttributeWithoutEmail
     Create Email Attribute Without Req
 
-TC24 - LessonCreateImage
+TC25 - LessonCreateImage
     Lesson With Image Upload Card
     
-TC25 - LessonCreateVideo
+TC26 - LessonCreateVideo
     Lesson With Video Upload Card
     
-TC26 - UserAttributeUserReferenceWithReq
+TC27 - UserAttributeUserReferenceWithReq
     Create User Reference Attribute With Required Field
     
-TC27 - UserAttributeUserReferenceWithoutReq
+TC28 - UserAttributeUserReferenceWithoutReq
     Create User Reference Attribute Without Required Field
     
-TC28 - TrackWithVidLessonDocLesssonQuesLesson
+TC29 - TrackWithVidLessonDocLesssonQuesLesson
     Track With Two Lessons Vid Doc Ques
     
-TC29 - TrackWithDocumentLesson
+TC30 - TrackWithDocumentLesson
     Lesson With Document Card
     
-TC30 - TrackWithImageLesson
+TC31 - TrackWithImageLesson
     Lesson With Image Card
         
-TC31 - TrackWithQuestionLesson
+TC32 - TrackWithQuestionLesson
     TrackWithQuestionLesson.Lesson With Question Answer Card
     
-TC32 - TrackWithTextLesson
+TC33 - TrackWithTextLesson
     Track With Lesson Contains Text Card
     
-TC33 - TrackWithTxtImgQueLesson
+TC34 - TrackWithTxtImgQueLesson
     Lesson With Text Image Question Card
     
-TC34 - TrackWithVideoLesson
+TC35 - TrackWithVideoLesson
     Lesson With Video Card
 
-TC35 - CreateTagDocLesson
+TC36 - CreateTagDocLesson
     Creating Tag For Document Lesson
     
-TC36 - CreateTagImageLesson
+TC37 - CreateTagImageLesson
     Create Tag For Image Lesson
     
-TC37 - CreateTagLessonCombinedLesson
+TC38 - CreateTagLessonCombinedLesson
     Create Tag For Combined Lesson
     
-TC38 - CreateTagLessonExplainAconcept
+TC39 - CreateTagLessonExplainAconcept
     Create Tag For Lesson Explain A Concept
 
-TC39 - CreateTagLessonIntroduceAtopic
+TC40 - CreateTagLessonIntroduceAtopic
     Create Tag For Lesson Introduce A Topic
     
-TC40 - CreateTagLessonLimitedmultiplecardlesson_1
+TC41 - CreateTagLessonLimitedmultiplecardlesson_1
     Create Tag For Lesson Limited Multiple Card Lesson One
     
     
-TC41 - CreateTagLessonLimitedmultiplecardlesson_2
+TC42 - CreateTagLessonLimitedmultiplecardlesson_2
     Create Tag For Lesson Limited Multiple Lesson Two
     
-TC42 - CreateTagLessonLimitedmultiplecardlesson_3
+TC43 - CreateTagLessonLimitedmultiplecardlesson_3
     Create Tag For Lesson Limited Multiple Card Lesson Three
     
-TC43 - CreateTagLessonMultiplecardlesson
+TC44 - CreateTagLessonMultiplecardlesson
     Create Tag For Lesson Multiple Card Lesson
     
-TC44 - CreateTagLessonPowerpoint
+TC45 - CreateTagLessonPowerpoint
     Create Tag For Lesson Power Point
     
-TC45 - CreateTagLessonScorm
+TC46 - CreateTagLessonScorm
     Create Tag For Lesson Scorm
     
-TC46 - CreateTagLessonTeachAskill   
+TC47 - CreateTagLessonTeachAskill   
     Create Tag For Lesson Teach A Skill
     
-TC47 - CreateTagLessonTextLesson
+TC48 - CreateTagLessonTextLesson
     Create Tag For Lesson Textlesson
     
-TC48 - CreateTagQuesLesson 
+TC49 - CreateTagQuesLesson 
     Create Tag For Question Lesson
     
-TC49 - CreateTagTrackLessonDocument   
+TC50 - CreateTagTrackLessonDocument   
     Create Tag For Track Lesson Document
     
-TC50 - CreateTagTrackLessonFiveVideoDocumentQuestion  
+TC51 - CreateTagTrackLessonFiveVideoDocumentQuestion  
     Create Tag For Track Lesson Five Video Document Question
     
-TC51 - CreateTagTrackLessonImage  
+TC52 - CreateTagTrackLessonImage  
     Create Tag For Track Lesson Image
     
     
-TC52 - CreateTagTrackLessonOneTextImageVideoDocumentQuestion  
+TC53 - CreateTagTrackLessonOneTextImageVideoDocumentQuestion  
     Create Tag For Track Lesson One Text Image Video Document Question
     
     
-TC53 - CreateTagTrackLessonQuestion
+TC54 - CreateTagTrackLessonQuestion
     Create Tag For Track Lesson Question
     
-TC54 - CreateTagTrackLessonTenTextVideoQuestion
+TC55 - CreateTagTrackLessonTenTextVideoQuestion
     Create Tag For Track Lesson Ten Text Video Question
     
-TC55 - CreateTagTrackLessonTwoTextImageVideoDocumentQuestion
+TC56 - CreateTagTrackLessonTwoTextImageVideoDocumentQuestion
     Create Tag For Track Lesson Two Text Image Video Document Question
     
-TC56 - CreateTagTrackLessonVideo
+TC57 - CreateTagTrackLessonVideo
     Create Tag For Track Lesson Video
     
     
-TC57 - CreateTagTrackWithfourlessons10_12_3
+TC58 - CreateTagTrackWithfourlessons10_12_3
     Create Tag For Track With Four Lessons Ten Twelve Three
     
-TC58 - CreateTagTrackWithfourlessons4_5_6_7
+TC59 - CreateTagTrackWithfourlessons4_5_6_7
     Create Tag For Track With Four Lessons Four Five Six Seven
 
       
-TC59 - CreateTagTrackWithfourlessons78910
+TC60 - CreateTagTrackWithfourlessons78910
     Create Tag For Track With Four Lesson Seven Eight Nine Ten
     
-TC60 - CreateTagTrackWithonelesson_9
+TC61 - CreateTagTrackWithonelesson_9
     Create Tag For Track With One Lesson Nine
     
-TC61 - CreateTagTrackWiththreelessons_3_4_5
+TC62 - CreateTagTrackWiththreelessons_3_4_5
     Create Tag For Track With Three Lessons Three Four Five
     
-TC62 - CreateTagTrackWiththreelessons_5_6_7
+TC63 - CreateTagTrackWiththreelessons_5_6_7
     Create Tag For Track With Three Lessons Five Six Seven
     
-TC63 - CreateTagTracklessonFiveTextImageQuestion
+TC64 - CreateTagTracklessonFiveTextImageQuestion
     Create Tag For Track Lesson Five Text Image Question
     
-TC64 - CreateTagTrackWithTwolessons_1_2
+TC65 - CreateTagTrackWithTwolessons_1_2
     Create Tag For Track With Two Lessons One Two
     
-TC65 - CreateTagTrackWithTwolessons_2_3
+TC66 - CreateTagTrackWithTwolessons_2_3
     Create Tag For Track With Two Lessons Two Three
 
-TC66 - CreateTagVideoLesson
+TC67 - CreateTagVideoLesson
     Create Tag For Video Lesson
    
     
-TC67 - LessonCreateDocument 
+TC68 - LessonCreateDocument 
     Lesson With Document Upload Card
        
-TC68 - LessonCreateQuestion
+TC69 - LessonCreateQuestion
     LessonCreateQuestion.Lesson With Question Answer Card
     
-TC69 - LessonCreateText
+TC70 - LessonCreateText
     LessonCreateText.Lesson With Text Card
     
-TC70 - TrackWithImgLessonVidLesson
+TC71 - TrackWithImgLessonVidLesson
     Track With Two Lessons Imgand Vid
     
-TC71 - TrackWithTxtLessonImgLesson
+TC72 - TrackWithTxtLessonImgLesson
     Track With Txt Lesson Image Lesson
     
-TC72 - TrackWithTxtVidQueLesson
+TC73 - TrackWithTxtVidQueLesson
     Lesson With Text Video Question Card
     
-TC73 - TrackWithVidDocQueLesson 
+TC74 - TrackWithVidDocQueLesson 
     Lesson With Video Document Question Card
     
-TC74 - TrackWithAllCardsOne
+TC75 - TrackWithAllCardsOne
     Track With All Cards
 
-TC75 - TrackWithAllCardsTwoTimes
+TC76 - TrackWithAllCardsTwoTimes
     Track With All Card Two Time
     
-TC76 - TrackWithFourLessons
+TC77 - TrackWithFourLessons
     Track With Four Lesson
     
-TC77 - TrackWithFourLessonsDifferentCombiOfLessons
+TC78 - TrackWithFourLessonsDifferentCombiOfLessons
     Track With Four Lessons Diff Combi 1
     
-TC78 - TrackWithFourLessonsDifferentCombiOfLessons2
+TC79 - TrackWithFourLessonsDifferentCombiOfLessons2
     Track With Four Lessons Different Combi 2
     
-TC79 - TrackWithQuesLesssonAllCards1timeAllCards2TimeLessons
+TC80 - TrackWithQuesLesssonAllCards1timeAllCards2TimeLessons
     Track With Ques All Card One And Two Time Lessons
+    
+
     
     
     
