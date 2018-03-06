@@ -3,7 +3,9 @@ test:
     #- npm install -g newman
     #- newman run ./AutomationTestcase.postman_collection.json 
     - pip install -r requirements.txt
-    - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite.robot 
+    #- pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite.robot 
+    - pybot -d ./TestData ./TestSuite.robot 
+    
 general:
   artifacts:
     - "robot_results"
