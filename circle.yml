@@ -1,6 +1,16 @@
 test:
   override:
-    - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite.robot
+    - npm install -g newman
+    - newman run ./AutomationTestcase.postman_collection.json
 general:
   artifacts:
     - "robot_results"
+
+
+
+#test:
+#  override:
+ #   - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite.robot
+#general:
+  #artifacts:
+  #  - "robot_results"
