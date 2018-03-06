@@ -1,7 +1,7 @@
 test:
   override:
     - npm install -g newman
-    - newman run ./selenium/AutomationTestcase.postman_collection.json 
+    - newman run ./AutomationTestcase.postman_collection.json 
     - pip install -r requirements.txt
     - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite.robot 
 general:
@@ -12,7 +12,7 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "35 10 * * *"
+          cron: "50 10 * * *"
           filters:
             branches:
               only:
