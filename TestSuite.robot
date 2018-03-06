@@ -1,4 +1,3 @@
-
 *** Settings ***
 Library   TestCases/BaseTestClass.py
 
