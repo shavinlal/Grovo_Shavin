@@ -6,11 +6,9 @@ general:
   artifacts:
     - "robot_results"
 
-
-
-#test:
-#  override:
- #   - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite.robot
-#general:
-  #artifacts:
-  #  - "robot_results"
+test:
+  override:
+    - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite.robot
+general:
+  artifacts:
+    - "robot_results"
