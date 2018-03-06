@@ -1,7 +1,8 @@
-  test:
-    override:
-      - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite.robot 
-  general:
-    artifacts:
-      - "robot_results" 
- 
+VERSION=`git log -n 1 --pretty=format:"%H"`
+SERVICE=ASSERTIBLE_SERVICE_ID
+
+curl -u $ASSERTIBLE_API_TOKEN: -XPOST 'https://assertible.com/deployments -d'{
+    "service" : "'"${SERVICE}"'",
+    "environmentName" : "production",
+    "version" : "'"${VERSION}"'"
+}'
