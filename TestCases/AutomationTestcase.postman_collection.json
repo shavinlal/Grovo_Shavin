@@ -1,0 +1,949 @@
+{
+	"id": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+	"name": "Automation Test case",
+	"description": "",
+	"order": [
+		"48b1fd67-1492-fd84-0d6c-b8ee718a4109",
+		"28127654-df87-8e73-98d2-0d2e88b422c5",
+		"1e85220d-93dd-3f21-44cc-010562377dbf",
+		"cafd59b6-824f-af9d-6a94-d5a0dd48a2e8",
+		"de91e052-9012-d732-5735-f772ec7672de",
+		"abc5b408-532a-40b1-acaa-abadc3af6970",
+		"5b101f35-88ff-cb91-2959-43aa39eb4614",
+		"89af3555-ec02-fda1-07a9-61a0c7050626",
+		"a010a382-79a8-5ec2-7ad8-15910bddbd86",
+		"1e97af97-3289-92ca-798d-1fdac5b7745e",
+		"a0e06270-2d53-4046-8a20-a6dcb91ee5cb",
+		"1403db21-5a49-8471-4a27-88044f831a20",
+		"47e501ec-734f-3354-f3fe-92431f869376",
+		"a975f48e-53af-4610-5791-67e58000819e",
+		"59a918a3-c011-db6a-8509-ed979e696e88",
+		"20a7975b-35e8-ba7c-f9e1-39253352d00d",
+		"cf30e8a7-6bf7-27f8-cc69-21fceb051608",
+		"9e391ebe-3c61-5f8e-e4ce-c55344279758",
+		"ea785bfc-67fd-f2ab-8dc9-08219bc0325e"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1518076031256,
+	"owner": "1693265",
+	"public": false,
+	"requests": [
+		{
+			"id": "1403db21-5a49-8471-4a27-88044f831a20",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1518094536441,
+			"name": "TC 60",
+			"description": "Custom atttribute- valid data",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"responses": [],
+			"rawModeData": "{\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L60\",\"textattribute\": \"test123daw\",\"numberattribute\":\"1323\", \"dateattribute\":\"1968-03-01T00:00:00+00:00\", \"emailattribute\": \"dwafewq@grovo.com\", \"checkbox\": true, \"userreference\": {\"key\": \"employeeId\",\"value\": \"0987667890\" } , \"list\":\"user1\"}"
+		},
+		{
+			"id": "1e85220d-93dd-3f21-44cc-010562377dbf",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": ""
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": ""
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1518094835702,
+			"name": "TC 45",
+			"description": "diff data type",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"responses": [],
+			"rawModeData": " {\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"%$^&*YHU*()\", \"lastName\": \"%^&*((CUI\" }\r\n"
+		},
+		{
+			"id": "1e97af97-3289-92ca-798d-1fdac5b7745e",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 50",
+			"description": "User creation with invalid Additional attribute details (excluding hireDate)",
+			"descriptionFormat": "html",
+			"time": 1518081827118,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"jobin{{$timestamp}}@grovo.com\", \"firstName\": \"jobin{{$timestamp}}\", \"lastName\": \"L50\",\"city\":\"%*@@@@@#\",\"country\": \"$@@#@\", \"department\": \"^%$$##\",\"jobTitle\": \"@#$\", \"location\": \"&^%$\", \"region\": \"&^%$\", \"state\": \"@#$%^%\", \"directRoles\": [{\"key\": \"name\", \"value\": \"Creator\"}], \"reportsTo\": {\"key\": \"employeeId\", \"value\": \"214748364723423\"}}"
+		},
+		{
+			"id": "20a7975b-35e8-ba7c-f9e1-39253352d00d",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: password\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "password",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 34",
+			"description": "User Creation with invalid attributes for Direct Role",
+			"descriptionFormat": "html",
+			"time": 1518419770858,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L34\",\"directRoles\": [{\"keys\": \"name\", \"values\": \"Creator\"}]}"
+		},
+		{
+			"id": "28127654-df87-8e73-98d2-0d2e88b422c5",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 48",
+			"description": " insertion of Additional attribute details in User Creation page ",
+			"descriptionFormat": "html",
+			"time": 1518076032977,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"jobin{{$timestamp}}@grovo.com\", \"firstName\": \"jobin{{$timestamp}}\", \"lastName\": \"L48\",\"city\":\"Boston\", \"country\":\"USA\", \"department\":\"Operations\",\"hireDate\":\"1968-03-01T00:00:00+00:00\",\"jobTitle\":\"Super Hero\",\"location\":\"Headquarters\",\"region\":\"North America\",\"state\":\"Massachusetts\", \"directRoles\": [{\"key\": \"name\", \"value\": \"Creator\"}], \"reportsTo\": {\"key\": \"employeeId\", \"value\": \"214748364723423\"}}"
+		},
+		{
+			"id": "47e501ec-734f-3354-f3fe-92431f869376",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 30",
+			"description": "User Creation with invalid 'Key' attribute for Direct Role",
+			"descriptionFormat": "html",
+			"time": 1518172242074,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": " {\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L30\",\"directRoles\": [{\"key\": \"names\", \"value\": \"Creator\"}]}"
+		},
+		{
+			"id": "48b1fd67-1492-fd84-0d6c-b8ee718a4109",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 28",
+			"description": "User Creation with Direct Role",
+			"descriptionFormat": "html",
+			"time": 1518080679976,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": " {\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L28\",\"directRoles\": [{\"key\": \"name\", \"value\": \"Creator\"}]}"
+		},
+		{
+			"id": "59a918a3-c011-db6a-8509-ed979e696e88",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: password\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "password",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1518412654659,
+			"name": "TC 32",
+			"description": "User Creation without values in 'Key' attribute for Direct Role",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"responses": [],
+			"rawModeData": "{\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L32\",\"directRoles\": [{\"key\": \"name\", \"value\": \"yuasia22\"}]}"
+		},
+		{
+			"id": "5b101f35-88ff-cb91-2959-43aa39eb4614",
+			"headers": "x-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nx-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\n",
+			"headerData": [
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "https://public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1519725590262,
+			"name": "TC 27",
+			"description": "User Creation  ",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"responses": [],
+			"rawModeData": " {\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L27\"}"
+		},
+		{
+			"id": "89af3555-ec02-fda1-07a9-61a0c7050626",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 35",
+			"description": "User Creation  with postman credentials",
+			"descriptionFormat": "html",
+			"time": 1518081122526,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L35\" ,\"directRoles\": [{\"key\": \"name\", \"value\": \"Creator\"}]}"
+		},
+		{
+			"id": "9e391ebe-3c61-5f8e-e4ce-c55344279758",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1518436194018,
+			"name": "TC 38",
+			"description": "User Updation with already existing user details",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"responses": [],
+			"rawModeData": "{\"employeeId\": \"1518433064\", \"primaryEmail\": \"job{{$timestamp}}@grovo.com\", \"firstName\": \"job{{$timestamp}}\", \"lastName\": \"L38\"}"
+		},
+		{
+			"id": "a010a382-79a8-5ec2-7ad8-15910bddbd86",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 49",
+			"description": "User creation with Additional attribute details with an blank values\"(excluding hireDate)\"",
+			"descriptionFormat": "html",
+			"time": 1518081223575,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"jobin{{$timestamp}}@grovo.com\", \"firstName\": \"jobin{{$timestamp}}\", \"lastName\": \"L49\", \"city\": \"\",  \"country\": \"\",  \"department\": \"\", \"hireDate\": \"1968-03-01T00:00:00+00:00\", \"jobTitle\": \"\",\"location\": \"\", \"region\": \"\",  \"state\": \"\", \"directRoles\": [{\"key\": \"name\", \"value\": \"Creator\"}], \"reportsTo\": {\"key\": \"employeeId\", \"value\": \"214748364723423\"}}"
+		},
+		{
+			"id": "a0e06270-2d53-4046-8a20-a6dcb91ee5cb",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 53",
+			"description": "User Creation page without a node",
+			"descriptionFormat": "html",
+			"time": 1518086050039,
+			"version": 2,
+			"responses": [],
+			"tests": "tests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"jobin{{$timestamp}}@grovo.com\", \"firstName\": \"jobin{{$timestamp}}\", \"lastName\": \"L53\",\"city\":\"Boston\", \"country\":\"USA\", \"department\":\"Operations\",\"hireDate\":\"1968-03-01T00:00:00+00:00\",\"jobTitle\":\"Super Hero\",\"location\":\"Headquarters\",\"state\":\"Massachusetts\", \"directRoles\": [{\"key\": \"name\", \"value\": \"Creator\"}], \"reportsTo\": {\"key\": \"employeeId\", \"value\": \"214748364723423\"}}"
+		},
+		{
+			"id": "a975f48e-53af-4610-5791-67e58000819e",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 31",
+			"description": "User Creation without values in 'Key' attribute for Direct Role",
+			"descriptionFormat": "html",
+			"time": 1518174141095,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": " {\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L31\",\"directRoles\": [{\"key\": \"\", \"value\": \"Creator\"}]}"
+		},
+		{
+			"id": "abc5b408-532a-40b1-acaa-abadc3af6970",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1518159552526,
+			"name": "TC 29",
+			"description": "User Creation with out Direct Role",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"responses": [],
+			"rawModeData": " {\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L29\",\"directRoles\": [{\"key\": \"name\", \"value\": \"\"}]}"
+		},
+		{
+			"id": "cafd59b6-824f-af9d-6a94-d5a0dd48a2e8",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [],
+			"dataMode": "raw",
+			"version": 2,
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1518700871631,
+			"name": "TC 42",
+			"description": "User creation with invalid employeeId",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"responses": [],
+			"rawModeData": " {\"employeeId\": \"&%^$1#12@!#\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L42\",\"directRoles\": [{\"key\": \"name\", \"value\": \"Creator\"}]}\r\n"
+		},
+		{
+			"id": "cf30e8a7-6bf7-27f8-cc69-21fceb051608",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 37",
+			"description": "User Creation with already existing Primary Email",
+			"descriptionFormat": "html",
+			"time": 1518421310345,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": " {\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"geethukn@grovo.com\", \"firstName\": \"geethu{{$timestamp}}\", \"lastName\": \"L37\"}"
+		},
+		{
+			"id": "de91e052-9012-d732-5735-f772ec7672de",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 33",
+			"description": "User Creation with multiple roles as Direct Role",
+			"descriptionFormat": "html",
+			"time": 1518080447791,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": " {\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"alwyn{{$timestamp}}@grovo.com\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L33\" ,\"directRoles\": [{\"key\": \"name\", \"value\": \"Creator\"},{\"key\": \"name\", \"value\": \"Master Administrator\"}]}"
+		},
+		{
+			"id": "ea785bfc-67fd-f2ab-8dc9-08219bc0325e",
+			"headers": "x-grovo-onboarding-option: email\nx-grovo-onboarding-pw: Data@123\nx-api-key: xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o\nContent-Type: application/x-ndjson\n",
+			"headerData": [
+				{
+					"key": "x-grovo-onboarding-option",
+					"value": "email",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-grovo-onboarding-pw",
+					"value": "Data@123",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "x-api-key",
+					"value": "xGEncOaKVX5KUEP7WhSir2ng5BrvfdptaJwIML9o",
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "Content-Type",
+					"value": "application/x-ndjson",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "public-api.grovo.com/users/batch-sync",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "ce4238f2-965f-41e2-d1d0-025d39094fdb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "TC 43",
+			"description": "Test for the blank Primary Email",
+			"descriptionFormat": "html",
+			"time": 1518436276938,
+			"version": 2,
+			"responses": [],
+			"tests": "\ntests[\"Status code is 202 Accepted\"] = responseCode.code === 202;\n\npostman.setEnvironmentVariable('isoTime',(new Date()).toISOString());\n\n",
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": " {\"employeeId\": \"{{$timestamp}}\", \"primaryEmail\": \"\", \"firstName\": \"alwyn{{$timestamp}}\", \"lastName\": \"L43\"}"
+		}
+	]
+}
