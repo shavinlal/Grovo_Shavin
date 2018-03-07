@@ -20,7 +20,7 @@ Library   TestCases/TrackWithImageLesson.py
 Library   TestCases/TrackWithQuestionLesson.py
 
 #Functions to create Campaign
-Library   TestCases/CampPage
+Library   TestCases/CampaignPageElements.CampPage
 Library   TestCases/CreateCampaignForTextLesson.py
 Library   TestCases/CreateCampaignForImageLesson.py
 Library   TestCases/CreateCampaignForVideoLesson.py
