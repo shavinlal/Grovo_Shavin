@@ -1,26 +1,25 @@
 *** Settings ***
 
-*** Config ***
+#Config
 Library   TestCases/BaseTestClass.py
 
-*** Fucntions for Test Bed cleanup ***
+#Fucntions for Test Bed cleanup
 Library   TestCases/Delete_Tags_Attributes_Lessons.py
-Library   TestCases/DeleteLesson.py
 
-*** Functions for User Creation with standard roles ***
+#Functions for User Creation with standard roles
 Library   TestCases/CreateCreator.py
 Library   TestCases/CreateLearner.py
 Library   TestCases/CreateLearnerAdministrator.py
 Library   TestCases/CreateMasterAdmin.py
 
-*** Functions to create Lessons ***
+#Functions to create Lessons
 Library   TestCases/BlankLessonOne.py
 Library   TestCases/LessonExplainAConcept.py
 Library   TestCases/TeachASkill.py
 Library   TestCases/LessonCreateImage.py
 Library   TestCases/LessonCreateVideo.py
 
-*** Functions to create Tracks ***
+#Functions to create Tracks
 Library   TestCases/TrackWithTxtImgQueLesson.py
 Library   TestCases/TrackWithDocumentLesson.py
 Library   TestCases/TrackWithImageLesson.py
@@ -31,7 +30,7 @@ Library   TestCases/TrackWithQuestionLesson.py
 TC0 - User Login
     User Login
  
-*** Test cases for User Creation with standard roles ***
+#Test cases for User Creation with standard roles
 TC9 - CreateCreator
     Create Creator User And Validation
 TC10 - CreateLearner
@@ -41,7 +40,7 @@ TC11 - CreateLearnerAdministrator
 TC12 - CreateMasterAdmin
     Create Master Admin User And Validation
 
-*** Test cases for Lesson creation ***
+#Test cases for Lesson creation
 TC4 - BlankLessonOne
     Blank Lesson One Main
 TC7 - LessonExplainAConcept
@@ -53,7 +52,7 @@ TC25 - LessonCreateImage
 TC26 - LessonCreateVideo
     Lesson With Video Upload Card
     
-*** Test cases for Track creation ***
+#Test cases for Track creation
 TC34 - TrackWithTxtImgQueLesson
     Lesson With Text Image Question Card
 TC30 - TrackWithDocumentLesson
