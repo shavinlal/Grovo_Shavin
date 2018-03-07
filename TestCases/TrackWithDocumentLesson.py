@@ -274,6 +274,9 @@ class TrackWithDocumentLesson:
         cell2 = first_sheet.cell(35,1)
         Imagefilepath = cell2.value
         
+        print "Image file path"
+        print Imagefilepath 
+        
         cell2 = first_sheet.cell(36,1)
         description = cell2.value
         
@@ -290,6 +293,9 @@ class TrackWithDocumentLesson:
        
         cell2 = first_sheet.cell(35,3)
         documentPath = cell2.value
+        
+        print "Document file path"
+        print documentPath 
         
         cell2 = first_sheet.cell(36,3)
         timeToUploaddocument = cell2.value
