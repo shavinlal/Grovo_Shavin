@@ -136,14 +136,19 @@ class CreateCreator():
         driver.find_element_by_id("create-edit-user-search-new-password").send_keys(Password)
         print "Password is Entered ::"+Password
         
-        print "Clicking on add button"
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div[5]/button")))
         driver.find_element_by_xpath("html/body/div/div/div[3]/div[2]/div/div[5]/button").click()
+        print "Clicked on add button"
+        
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/button[1]").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/header/h1")))
+        print "Clicked on Save button"
+        
         print "Searching for the Created User"
+        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/header/h1")))
+        
         driver.find_element_by_id("search-users").send_keys(FirstName)
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr[1]")))
+        
         ele =driver.find_element_by_xpath("html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr/td[1]").text
         if(ele==FirstName):
          print("Created User Verified")
@@ -278,8 +283,7 @@ class CreateCreator():
             HomeURL = cell.value
             print HomeURL
             driver.get(HomeURL)
-            wait=WebDriverWait(driver, 80)
-            wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
+            
             print "Home Page Loaded"
         
         
