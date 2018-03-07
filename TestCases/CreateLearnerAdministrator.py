@@ -128,13 +128,17 @@ class CreateLearnerAdministrator():
         driver.find_element_by_id("create-edit-user-search-new-password").send_keys(Password)
         print "Password is Entered ::"+Password
         
-        print "Clicking on add button"
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div[5]/button")))
         driver.find_element_by_xpath("html/body/div/div/div[3]/div[2]/div/div[5]/button").click()
+        print "Clicked on add button"
+        
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/button[1]").click()
+        print "Clicked on save button"
+        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/header/h1")))
-        print "Searching for the Created User"
         driver.find_element_by_id("search-users").send_keys(FirstName)
+        print "Searching for the Created User"
+        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr[1]")))
         ele =driver.find_element_by_xpath("html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr/td[1]").text
         if(ele==FirstName):
@@ -147,9 +151,9 @@ class CreateLearnerAdministrator():
         driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[2]/div[2]/a").click()
         print "Clicked on signOut Button"
         wait.until(EC.visibility_of_element_located((By.ID,"username")))
+    
+    
     def createLearnerAdminLogin(self):
-        
-        
         print "Reading data from excel sheet"
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         first_sheet = book.sheet_by_name('CreateuserfromUI')
@@ -167,8 +171,6 @@ class CreateLearnerAdministrator():
         cell = first_sheet.cell(4,7)
         NewPassword = cell.value
         print NewPassword
-        
-        
         
         wait=WebDriverWait(driver, 6)
         print "Grovo Sign-In page is displayed"
@@ -200,10 +202,6 @@ class CreateLearnerAdministrator():
         
     def againuserLogin(self):
     
-        
-        
-        
-        
         print "Reading data from excel sheet"
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         
@@ -268,7 +266,6 @@ class CreateLearnerAdministrator():
             ob.againuserLogin() 
             
         finally:  
-            print "clicking on Home"
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
             first_sheet = book.sheet_by_name('Login_Credentials')
             print("Fetching the Attribute Name from Excel Sheet\n")
@@ -277,6 +274,4 @@ class CreateLearnerAdministrator():
             HomeURL = cell.value
             print HomeURL
             driver.get(HomeURL)
-            wait=WebDriverWait(driver, 80)
-            wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
             print "Home Page Loaded"
