@@ -78,14 +78,18 @@ class Delete_Tags_Attributes_Lessons:
             print "Clicked on Admin"
             driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[5]").click()
             print "Clicked on Tag"
+            time.sleep(5)
             
-            ele=driver.find_elements_by_xpath("//li[@class='u-inline-block']/a")
-            count=len(ele)
+            count = driver.find_element_by_xpath("//*[@id='content']/div/div[3]/div[2]/div/div/section[2]/ul/li[1]/span").text
             print count
             
-            if count==0:
+            if count=='0':
                 print "No Tags to delete"
             else: 
+                wait.until(EC.visibility_of_element_located((By.XPATH,"//li[@class='u-inline-block']/a")))
+                ele=driver.find_elements_by_xpath("//li[@class='u-inline-block']/a")
+                count=len(ele)
+            
                 wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div/section[2]/div/ul/li[1]/a")))
                 print "Tag Page Loaded"
                 
@@ -114,15 +118,20 @@ class Delete_Tags_Attributes_Lessons:
             driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[4]").click()
             print "User attribute Page Loaded"
            
-            wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div/div/div[2]/div/table/tbody/tr[1]/td[5]/button")))
-            print "Deleting all attributes"
-            ele=driver.find_elements_by_xpath("//tbody/tr/td[5]/button")
-            count=len(ele)
+            count = driver.find_element_by_xpath("//*[@id='content']/div/div[3]/div[2]/div/div/ul/li[1]/span").text
             print count
             
-            for count in range (0,count):
-                d.deleteAttribute()
-            print "All Attributes are deleted"  
+            if count=='0':
+                print "No Attributes to delete"
+            else:
+                wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div/div/div[2]/div/table/tbody/tr[1]/td[5]/button")))
+                print "Deleting all attributes"
+                ele=driver.find_elements_by_xpath("//tbody/tr/td[5]/button")
+                count=len(ele)
+                
+                for count in range (0,count):
+                    d.deleteAttribute()
+                print "All Attributes are deleted"  
             
         finally:
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
@@ -136,18 +145,15 @@ class Delete_Tags_Attributes_Lessons:
         try:
             d=Delete_Tags_Attributes_Lessons()
             d.deleteLesson()
+            
             wait=WebDriverWait(driver, 60)
             wait.until(EC.visibility_of_element_located((By.XPATH,"//tr[1]/td[4]/button[.='Delete']")))
             ele=driver.find_elements_by_xpath("//tbody/tr/td[4]/button[.='Delete']")
             count=len(ele)
-            print count
-            
-            if count==0:
-                print "No Lessons to delete"
-            else: 
-                for count in range (0,count):
-                    d.deleteItLesson()
-                print "All Lessons are deleted" 
+                
+            for count in range (0,count):
+                d.deleteItLesson()
+            print "All Lessons are deleted" 
             
         finally:
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
