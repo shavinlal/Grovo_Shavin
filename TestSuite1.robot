@@ -29,16 +29,9 @@ Library   TestCases/TrackWithQuestionLesson.py
 *** Test Cases ***
 TC0 - User Login
     User Login
- 
-#Test cases for User Creation with standard roles
-TC9 - CreateCreator
-    Create Creator User And Validation
-TC10 - CreateLearner
-    Create Learner User And Validation
-TC11 - CreateLearnerAdministrator
-    Create Learner Admin User And Validation
-TC12 - CreateMasterAdmin
-    Create Master Admin User And Validation
+    
+TC1 - Delete_Tags_Attributes_Lessons
+    Main Delete All
 
 #Test cases for Lesson creation
 TC4 - BlankLessonOne
