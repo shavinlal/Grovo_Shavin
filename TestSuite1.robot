@@ -6,12 +6,6 @@ Library   TestCases/BaseTestClass.py
 #Fucntions for Test Bed cleanup
 Library   TestCases/Delete_Tags_Attributes_Lessons.py
 
-#Functions for User Creation with standard roles
-Library   TestCases/CreateCreator.py
-Library   TestCases/CreateLearner.py
-Library   TestCases/CreateLearnerAdministrator.py
-Library   TestCases/CreateMasterAdmin.py
-
 #Functions to create Lessons
 Library   TestCases/BlankLessonOne.py
 Library   TestCases/LessonExplainAConcept.py
@@ -24,6 +18,26 @@ Library   TestCases/TrackWithTxtImgQueLesson.py
 Library   TestCases/TrackWithDocumentLesson.py
 Library   TestCases/TrackWithImageLesson.py
 Library   TestCases/TrackWithQuestionLesson.py
+
+#Functions to create Campaign
+Library   TestCases/CampPage
+Library   TestCases/CreateCampaignForTextLesson.py
+Library   TestCases/CreateCampaignForImageLesson.py
+Library   TestCases/CreateCampaignForVideoLesson.py
+Library   TestCases/CreateCampaignForDocumentLesson.py
+Library   TestCases/CreateCampaignForQuestionLesson.py
+Library   TestCases/CreateCampaignForAllCardsOneTime.py
+Library   TestCases/CreateCampaignForTxtImgQueLesson.py
+Library   TestCases/CreateCampaignForAllCardsTwoTime.py
+Library   TestCases/CreateCampaignForTxtVidQuesLesson.py
+Library   TestCases/CreateCampaignForVidDocQueLesson.py
+Library   TestCases/CreateCampaignForFourLessonsOne.py
+Library   TestCases/CreateCampaignForFourLessonsTwo.py
+Library   TestCases/CreateCampaignForFourLessonsThree.py
+Library   TestCases/CreateCampaignForTextAndImageLesson.py
+Library   TestCases/CreateCampaignForImageAndVideoLesson.py
+Library   TestCases/CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons.py
+Library   TestCases/CreateCampaignForVideoLsnDocLsQuestionLes.py
 
 
 *** Test Cases ***
@@ -53,4 +67,55 @@ TC30 - TrackWithDocumentLesson
 TC31 - TrackWithImageLesson
     Lesson With Image Card
 TC32 - TrackWithQuestionLesson
-    TrackWithQuestionLesson.Lesson With Question Answer Card    
+    TrackWithQuestionLesson.Lesson With Question Answer Card   
+    
+TC81 - CreateCampaignForTextLesson
+    Create Campaign Text Lesson
+
+TC82 - CreateCampaignForImageLesson
+    Create Campaign Image Lesson
+
+TC83 - CreateCampaignForVideoLesson
+    Create Campaign Video Lesson
+
+TC84 - CreateCampaignForDocumentLesson
+    Create Campaign Document Lesson
+
+TC85 - CreateCampaignForQuestionLesson
+    Create Campaign Question Lesson
+
+TC86 - CreateCampaignForTxtImgQueLesson
+    Create Campaign Text Image Ques Lesson
+
+TC87 - CreateCampaignForAllCardsOneTime
+    Create Campaign All Cards One Time Lesson
+
+TC88 - CreateCampaignForAllCardsTwoTime
+    Create Campaign With All Cards Two Time Lesson
+
+TC89 - CreateCampaignForTxtVidQuesLesson
+    Create Campaign With Lesson Text Video Question
+
+TC90 - CreateCampaignForVidDocQueLesson
+    Create Campaign With Lesson Video Document Question
+
+TC91 - CreateCampaignForFourLessonsOne
+    Create Campaign With Four Lessons One
+
+TC92 - CreateCampaignForFourLessonsTwo
+    Create Campaign With Four Lessons Two
+
+TC93 - CreateCampaignForFourLessonsThree
+    Create Campaign With Four Lessons Three
+
+TC94 - CreateCampaignForTextAndImageLesson
+    Create Campaign With Text Lesson Image Lesson
+
+TC95 - CreateCampaignForImageAndVideoLesson
+    Create Campaign With Image Lesson Video Lesson
+
+TC96 - CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons
+    Create Campaign With Three Lessons
+
+TC97 - CreateCampaignForVideoLsnDocLsQuestionLes
+    Create Campaign With Video Lesson Document Lesson Question Lesson    
