@@ -20,7 +20,6 @@ Library   TestCases/TrackWithImageLesson.py
 Library   TestCases/TrackWithQuestionLesson.py
 
 #Functions to create Campaign
-Library   TestCases/CampaignPageElements.CampPage
 Library   TestCases/CreateCampaignForTextLesson.py
 Library   TestCases/CreateCampaignForImageLesson.py
 Library   TestCases/CreateCampaignForVideoLesson.py
@@ -38,6 +37,7 @@ Library   TestCases/CreateCampaignForTextAndImageLesson.py
 Library   TestCases/CreateCampaignForImageAndVideoLesson.py
 Library   TestCases/CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons.py
 Library   TestCases/CreateCampaignForVideoLsnDocLsQuestionLes.py
+Library   TestCases/CampaignPageDisplay.py
 
 
 *** Test Cases ***
@@ -118,4 +118,7 @@ TC96 - CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons
     Create Campaign With Three Lessons
 
 TC97 - CreateCampaignForVideoLsnDocLsQuestionLes
-    Create Campaign With Video Lesson Document Lesson Question Lesson    
+    Create Campaign With Video Lesson Document Lesson Question Lesson  
+    
+TC98 - CampaignPageDisplay
+    Campaigns Page Display Main
