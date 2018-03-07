@@ -21,6 +21,6 @@ workflows:
                 - master
                 - beta
     jobs:
-      - test
+      - test 
       
 
