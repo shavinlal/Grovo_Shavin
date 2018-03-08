@@ -5,6 +5,8 @@ test:
     - pybot -n non-critical -d "robot_results" ./TestSuite1.robot 
     - npm install -g newman
     - newman run ./APITestCasecollection.postman_collection.json 
+    - pip install -r requirements.txt
+    - pybot -n non-critical -d "robot_results" ./TestSuite1.robot
     #- pybot -d ./TestData ./TestSuite.robot 
     
 general:
