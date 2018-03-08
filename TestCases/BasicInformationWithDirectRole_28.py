@@ -23,7 +23,7 @@ class BasicInformationWithDirectRole_28:
     
     def userCreationWithDirectRole(self):
         print "Reading data from excel sheet"
-        book=xlrd.open_workbook(os.path.join('D:\_WorkSpace\EclipseWS\PythonAutomation\src\TestData.xlsx'))
+        book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         sheet1=book.sheet_by_name('API testing')
         print("Fetching the LastName from Excel to search")
         #Read from Excel to search
