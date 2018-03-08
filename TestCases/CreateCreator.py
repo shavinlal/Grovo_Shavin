@@ -1,8 +1,3 @@
-'''
-Created on 22-Feb-2018
-
-@author: Sheethu C
-'''
 from operator import contains
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -136,13 +131,13 @@ class CreateCreator():
         driver.find_element_by_id("create-edit-user-search-new-password").send_keys(Password)
         print "Password is Entered ::"+Password
         
-        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div[5]/button")))
-        driver.find_element_by_xpath("html/body/div/div/div[3]/div[2]/div/div[5]/button").click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,"//button[.='Add']")))
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//button[.='Add']")))
+        driver.find_element_by_xpath("//button[.='Add']").click()
         print "Clicked on add button"
-        
-        driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/button[1]").click()
-        print "Clicked on Save button"
-        
+        wait.until(EC.visibility_of_element_located((By.XPATH,"//button[.='Save']")))
+        driver.find_element_by_xpath("//button[.='Save']").click()
+        print "Clicked on Save"
         print "Searching for the Created User"
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/header/h1")))
         
@@ -201,6 +196,19 @@ class CreateCreator():
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[1]/div[2]/button").click()
         wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
         print "Home Page is Loaded"
+        
+        print "Creator Page Verification"
+        driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[1]/div[2]/button").click()
+        if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]").is_displayed():
+            if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[2]").is_displayed():
+                if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]").is_displayed():
+                    if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[4]").is_displayed():
+                        print "User with Creator Role is able to login and HOME,LIBRARY,CREATE and CAMPAIGN is displaying.."
+                        
+                    else:
+                        print"Home page not displayed"
+        
+        
         print "Sign out "
         ele =driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[1]/nav/div[2]/a/span[3]")
         driver.execute_script('arguments[0].click()',ele)
@@ -285,5 +293,3 @@ class CreateCreator():
             driver.get(HomeURL)
             
             print "Home Page Loaded"
-        
-        
