@@ -6,7 +6,6 @@ Created on 02-Mar-2018
 import os.path
 import time
 
-
 from BaseTestClass import driver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -384,13 +383,14 @@ class CreateCampaignForFourLessonsOne:
         objfore.videoCard(videoPath, timeToUploadVideo)
         objfore.videoCard(videoPath, timeToUploadVideo)
         
+        time.sleep(4)
         objfore.docCard(documentPath)
         objfore.docCard(documentPath)
-         
+        time.sleep(2)
         objfore.quesCard(questionCard, ans1, ans2, ans3)
         objfore.quesCard(questionCard, ans1, ans2, ans3)  
         
-        
+        objfore.textCard(textCard)   
         print "All Cards inserted"
         
         print "Publishing lesson"
@@ -505,14 +505,15 @@ class CreateCampaignForFourLessonsOne:
         objforThis.imageCard(Imagefilepath1)
         
         #Question card
+        time.sleep(4)
         objforThis.quesCard(questionCard, ans1, ans2, ans3)
         objforThis.quesCard(questionCard, ans1, ans2, ans3)
         objforThis.quesCard(questionCard, ans1, ans2, ans3)
         objforThis.quesCard(questionCard, ans1, ans2, ans3)
         objforThis.quesCard(questionCard, ans1, ans2, ans3)
+        time.sleep(2)
         objforThis.textCard(textCard)
         
-        driver.find_element_by_xpath("//div[@class='card-delete']/button").click()
         print "All Cards inserted"
         
         print "Publishing lesson"
@@ -624,16 +625,17 @@ class CreateCampaignForFourLessonsOne:
         objFor.docCard(documentPath)
        
         #Question card
+        time.sleep(4)
         objFor.quesCard(questionCard, ans1, ans2, ans3)
         objFor.quesCard(questionCard, ans1, ans2, ans3)
         objFor.quesCard(questionCard, ans1, ans2, ans3)
         objFor.quesCard(questionCard, ans1, ans2, ans3)
         objFor.quesCard(questionCard, ans1, ans2, ans3)
+        time.sleep(2)
         objFor.textCard(textCard)
         
         print "All Cards inserted"
         
-        driver.find_element_by_xpath("//div[@class='card-delete']/button").click()
         print "Publishing lesson"
         publishbutton=wait.until(EC.element_to_be_clickable((By.XPATH,"html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button")))
         
@@ -771,9 +773,8 @@ class CreateCampaignForFourLessonsOne:
         objfor.quesCard(questionCard, ans1, ans2, ans3)
         objfor.quesCard(questionCard, ans1, ans2, ans3)
         
-        time.sleep(2)
         objfor.textCard(textCard)
-        
+        time.sleep(2)
         
         print "All Cards inserted"
         
@@ -908,4 +909,3 @@ class CreateCampaignForFourLessonsOne:
             url = cell.value
             driver.get(url)
         
- 

@@ -4,6 +4,7 @@ Created on 02-Mar-2018
 @author: dattatraya
 '''
 import os.path
+import time
 
 from BaseTestClass import driver
 from selenium import webdriver
@@ -638,7 +639,7 @@ class CreateCampaignForFourLessonsThree:
         objll.docCard(documentPath)
         objll.quesCard(questionCard, ans1, ans2)
         objll.textCard(textCard)
-        driver.find_element_by_xpath("//div[@class='card-delete']/button").click()
+        time.sleep(2)
         print "All Cards inserted"
         
         print "Publishing lesson"
@@ -753,7 +754,7 @@ class CreateCampaignForFourLessonsThree:
         objfore.quesCard(questionCard, ans1, ans2)
         
         objfore.textCard(textCard)
-        
+        time.sleep(2)
         print "All Cards inserted"
         
         print "Publishing lesson"
@@ -883,7 +884,5 @@ class CreateCampaignForFourLessonsThree:
             url = cell.value
             driver.get(url)
         
+        
  
-    
-    
-    
