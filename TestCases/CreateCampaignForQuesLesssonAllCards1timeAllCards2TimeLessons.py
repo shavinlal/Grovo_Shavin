@@ -6,6 +6,7 @@ Created on 01-Mar-2018
 import os.path
 import time
 
+
 from BaseTestClass import driver
 from CampaignPageElements import CampPage
 from selenium import webdriver
@@ -490,9 +491,11 @@ class CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons:
         objfore.textCard(textCard)
         objfore.imageCard(Imagefilepath1)
         objfore.videoCard(videoPath, timeToUploadVideo)
+        time.sleep(4)
         objfore.docCard(documentPath)
         objfore.quesCard(questionCard, ans1, ans2)
-        
+        objfore.textCard(textCard)
+        time.sleep(2)
         print "All Cards inserted"
         
         print "Publishing lesson"
@@ -598,12 +601,15 @@ class CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons:
         objfore.videoCard(videoPath, timeToUploadVideo)
         objfore.videoCard(videoPath, timeToUploadVideo)
         
+        time.sleep(4)
         objfore.docCard(documentPath)
         objfore.docCard(documentPath)
         
         objfore.quesCard(questionCard, ans1, ans2)
         objfore.quesCard(questionCard, ans1, ans2)
         
+        objfore.textCard(textCard)
+        time.sleep(2)
         print "All Cards inserted"
         
         print "Publishing lesson"
@@ -731,5 +737,3 @@ class CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons:
             url = cell.value
             driver.get(url)
         
-        
- 
