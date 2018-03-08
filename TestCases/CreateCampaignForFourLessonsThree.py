@@ -5,7 +5,6 @@ Created on 02-Mar-2018
 '''
 import os.path
 
-
 from BaseTestClass import driver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -631,14 +630,14 @@ class CreateCampaignForFourLessonsThree:
         print "Entered lesson name ::"+lessonName
       
         #Text Card
-        objfore=CreateCampaignForFourLessonsThree()
+        objll=CreateCampaignForFourLessonsThree()
          
-        objfore.textCard(textCard)
-        objfore.imageCard(Imagefilepath1)
-        objfore.videoCard(videoPath, timeToUploadVideo)
-        objfore.docCard(documentPath)
-        objfore.quesCard(questionCard, ans1, ans2)
-        objfore.textCard(textCard)
+        objll.textCard(textCard)
+        objll.imageCard(Imagefilepath1)
+        objll.videoCard(videoPath, timeToUploadVideo)
+        objll.docCard(documentPath)
+        objll.quesCard(questionCard, ans1, ans2)
+        objll.textCard(textCard)
         driver.find_element_by_xpath("//div[@class='card-delete']/button").click()
         print "All Cards inserted"
         
@@ -884,5 +883,7 @@ class CreateCampaignForFourLessonsThree:
             url = cell.value
             driver.get(url)
         
-        
  
+    
+    
+    
