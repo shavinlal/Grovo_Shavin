@@ -88,7 +88,7 @@ class BasicInformationValidData_27:
         wait.until(EC.visibility_of_element_located((By.ID,"username")))
     def Logincreateuser(self):    
         print "Reading data from excel sheet"
-        book=xlrd.open_workbook(os.path.join('D:\_WorkSpace\EclipseWS\PythonAutomation\src\TestData.xlsx'))
+        book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         sheet1=book.sheet_by_name('API testing')
         cell2 = sheet1.cell(1,2)
         Currentpassword = cell2.value
