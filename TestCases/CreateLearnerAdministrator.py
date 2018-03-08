@@ -4,17 +4,21 @@ Created on 22-Feb-2018
 @author: Sheethu C
 '''
 from operator import contains
+import os.path
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-from BaseTestClass import driver
 import xlrd
-import os.path
-import time
+
+from BaseTestClass import driver
+
 
 class CreateLearnerAdministrator():
+    
     
     def createLearnerAdminUser(self):
         
@@ -128,17 +132,16 @@ class CreateLearnerAdministrator():
         driver.find_element_by_id("create-edit-user-search-new-password").send_keys(Password)
         print "Password is Entered ::"+Password
         
-        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div[5]/button")))
-        driver.find_element_by_xpath("html/body/div/div/div[3]/div[2]/div/div[5]/button").click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,"//button[.='Add']")))
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//button[.='Add']")))
+        driver.find_element_by_xpath("//button[.='Add']").click()
         print "Clicked on add button"
-        
-        driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/button[1]").click()
-        print "Clicked on save button"
-        
+        wait.until(EC.visibility_of_element_located((By.XPATH,"//button[.='Save']")))
+        driver.find_element_by_xpath("//button[.='Save']").click()
+        print "Clicked on Save"
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/header/h1")))
-        driver.find_element_by_id("search-users").send_keys(FirstName)
         print "Searching for the Created User"
-        
+        driver.find_element_by_id("search-users").send_keys(FirstName)
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr[1]")))
         ele =driver.find_element_by_xpath("html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr/td[1]").text
         if(ele==FirstName):
@@ -151,9 +154,9 @@ class CreateLearnerAdministrator():
         driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[2]/div[2]/a").click()
         print "Clicked on signOut Button"
         wait.until(EC.visibility_of_element_located((By.ID,"username")))
-    
-    
     def createLearnerAdminLogin(self):
+        
+        
         print "Reading data from excel sheet"
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         first_sheet = book.sheet_by_name('CreateuserfromUI')
@@ -172,7 +175,9 @@ class CreateLearnerAdministrator():
         NewPassword = cell.value
         print NewPassword
         
-        wait=WebDriverWait(driver, 6)
+        
+        
+        wait=WebDriverWait(driver, 60)
         print "Grovo Sign-In page is displayed"
         
         print "Entering User name"
@@ -192,16 +197,40 @@ class CreateLearnerAdministrator():
         print "New Password is entered :"+NewPassword
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[1]/div[2]/button")))
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[1]/div[2]/button").click()
-        wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
+        wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]")))
         print "Home Page is Loaded"
+        
+        Expand =driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]")
+        driver.execute_script('arguments[0].click()',Expand)
+        print "Expand Button clicked"
+        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]")))
+        print "waiting For Admin"
+        Admin =driver.find_element_by_xpath("//a[@href='/admin/tags']")
+        driver.execute_script('arguments[0].click()',Admin)
+        print "Clicked on Admin"
+        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]/div/ul/li[1]")))
+        #driver.execute_script('arguments[0].click()',Admin)
+        if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]").is_displayed():
+            if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[2]").is_displayed():
+                if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]").is_displayed():
+                    if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[4]").is_displayed():
+                        if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]").is_displayed():
+                            if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]/div/ul/li[1]").is_displayed():  
+                                if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]/div/ul/li[2]").is_displayed():    
+                                    print "User with Creator Role is able to login and HOME,LIBRARY,CREATE, CAMPAIGN, REPORTS,admin And Admin-Tags ANd Admin -Content Manager is displaying.."
+                        
+                    else:
+                        print"Home page not displayed"
+        
+        
+        
         print "Sign out "
         ele =driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[1]/nav/div[2]/a/span[3]")
         driver.execute_script('arguments[0].click()',ele)
         elem=driver.find_element_by_xpath("html/body/div/div/div[1]/div[2]/div[2]/a")
         driver.execute_script('arguments[0].click()',elem)
-        
     def againuserLogin(self):
-    
+        
         print "Reading data from excel sheet"
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         
@@ -255,17 +284,18 @@ class CreateLearnerAdministrator():
         
         print "Successfully Loged Into Grovo Application"
         time.sleep(5)
-              
-        
+           
+        #again login   
+    
     def createLearnerAdminUserAndValidation(self):
-        
         try :
-            ob = CreateLearnerAdministrator()
+            ob =CreateLearnerAdministrator()
             ob.createLearnerAdminUser()
-            ob.createLearnerAdminLogin()
-            ob.againuserLogin() 
+            ob.createLearnerAdminLogin()  
+            ob.againuserLogin()
             
         finally:  
+            print "clicking on Home"
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
             first_sheet = book.sheet_by_name('Login_Credentials')
             print("Fetching the Attribute Name from Excel Sheet\n")
@@ -274,4 +304,8 @@ class CreateLearnerAdministrator():
             HomeURL = cell.value
             print HomeURL
             driver.get(HomeURL)
+            
             print "Home Page Loaded"
+       
+        
+     
