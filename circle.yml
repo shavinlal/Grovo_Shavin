@@ -1,7 +1,7 @@
 test:
   override:
-    #- npm install -g newman
-    #- newman run ./AutomationTestcase.postman_collection.json 
+    - npm install -g newman
+    - newman run ./AutomationTestcase.postman_collection.json 
     - pip install -r requirements.txt
     - pybot -n non-critical -d "robot_results" ./TestSuite1.robot 
     #- pybot -d ./TestData ./TestSuite.robot 
