@@ -1,8 +1,3 @@
-'''
-Created on 21-Feb-2018
-
-@author: Sheethu C
-'''
 from operator import contains
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -10,6 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 from BaseTestClass import driver
+
 import os.path
 import xlrd
 import time
@@ -113,12 +109,13 @@ class CreateLearner():
         driver.find_element_by_id("create-edit-user-search-new-password").send_keys(Password)
         print "Password is Entered ::"+Password
         
-        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div[5]/button")))
-        driver.find_element_by_xpath("html/body/div/div/div[3]/div[2]/div/div[5]/button").click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,"//button[.='Add']")))
+        wait.until(EC.element_to_be_clickable((By.XPATH,"//button[.='Add']")))
+        driver.find_element_by_xpath("//button[.='Add']").click()
         print "Clicked on add button"
-        
-        driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/button[1]").click()
-        print "Clicked on Save button"
+        wait.until(EC.visibility_of_element_located((By.XPATH,"//button[.='Save']")))
+        driver.find_element_by_xpath("//button[.='Save']").click()
+        print "Clicked on Save"
         
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/header/h1")))
         driver.find_element_by_id("search-users").send_keys(FirstName)
@@ -179,6 +176,18 @@ class CreateLearner():
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[1]/div[2]/button").click()
         wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
         print "Home Page is Loaded"
+        
+        print "Learner Home Page Verification"
+        expectedresult = "Home"
+        expectedresult1="Library"
+        actualresult = driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div/nav/div[1]/a[2]/span").text
+        actualresult1 = driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div/nav/div[1]/a[3]/span").text
+        if(expectedresult == actualresult):
+            if(expectedresult1==actualresult1):
+                print"User is able to login and Dashboard is displayed.."
+        else:
+            print"User not able to login.."
+            raise Exception    
         print "Sign out "
         ele =driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[1]/nav/div[2]/a/span[3]")
         driver.execute_script('arguments[0].click()',ele)
@@ -261,5 +270,4 @@ class CreateLearner():
             driver.get(HomeURL)
             
             print "Home Page Loaded"
-        
-       
+            
