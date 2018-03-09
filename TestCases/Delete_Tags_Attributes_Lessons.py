@@ -5,7 +5,7 @@ Created on 05-Mar-2018
 '''
 import os
 import time
-from openpyxl import load_workbook
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -13,8 +13,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import xlrd
 from BaseTestClass import driver
-from urllib import splitvalue
-
 
 class Delete_Tags_Attributes_Lessons:
     
@@ -65,7 +63,33 @@ class Delete_Tags_Attributes_Lessons:
         
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[2]/div/div")))
         time.sleep(3)
-     
+        
+    def deactivateuser(self):
+        for i in range(2):
+            print "Reading data from excel sheet"
+            book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
+            sheet1=book.sheet_by_name('API testing')
+            print("Fetching the LastName from Excel Sheet\n")
+            #Read from Excel to search
+            cell1 = sheet1.cell(i+1,1)
+            searchlastName = cell1.value
+            #Clicking on Admin Menu from Grovo Application
+            
+            driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/a").click()
+            wait=WebDriverWait(driver,80)
+            wait.until(EC.visibility_of_element_located((By.ID,"search-users")))
+            driver.find_element_by_id("search-users").send_keys(searchlastName)
+            wait=WebDriverWait(driver,80)
+            #To click on FirstName link
+            wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr[1]")))
+            driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr/td[1]/a").click()
+            wait=WebDriverWait(driver,80)
+            driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/header/div/button").click()
+            wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/button[1]")))
+            driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/button[1]").click()  
+            wait.until(EC.visibility_of_element_located((By.ID,"search-users")))
+            driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
+            print "All Created users are Deactivated"
                 
     def mainDeletetag(self):
         try:
@@ -79,7 +103,7 @@ class Delete_Tags_Attributes_Lessons:
             print "Clicked on Admin"
             driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[5]").click()
             print "Clicked on Tag"
-            time.sleep(8)
+            time.sleep(5)
             
             count = driver.find_element_by_xpath("//*[@id='content']/div/div[3]/div[2]/div/div/section[2]/ul/li[1]/span").text
             print count
@@ -118,8 +142,7 @@ class Delete_Tags_Attributes_Lessons:
             print "Clicked on User Attribute"
             driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[4]").click()
             print "User attribute Page Loaded"
-            time.sleep(8)
-            
+           
             count = driver.find_element_by_xpath("//*[@id='content']/div/div[3]/div[2]/div/div/ul/li[1]/span").text
             print count
             
@@ -155,113 +178,9 @@ class Delete_Tags_Attributes_Lessons:
                 
             for count in range (0,count):
                 d.deleteItLesson()
+                driver.refresh() 
+                wait.until(EC.element_to_be_clickable((By.XPATH,"//tr[1]/td[4]/button[.='Delete']"))) 
             print "All Lessons are deleted" 
-            
-        finally:
-            book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
-            second_sheet = book.sheet_by_name('Login_Credentials')
-            cell = second_sheet.cell(1,1)
-            url = cell.value
-            driver.get(url) 
-            
-    def mainUpdateExcelWithUserDetails(self):
-        try:
-            book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
-            second_sheet = book.sheet_by_name('CreateuserfromUI')
-            
-            cell2 = second_sheet.cell(1,4)
-            LearnId = cell2.value
-            LearnsId = LearnId.split("#")
-            emp = LearnsId[0]+"#"
-            ids = LearnsId[1]
-            empId = int(ids)+1
-            LearnerEmpId = emp+str(empId)
-            print LearnerEmpId
-            
-            cell1 = second_sheet.cell(1,3)
-            LearnEmailId = cell1.value
-            LearnerEmail = LearnEmailId.split("@")
-            spitValue = LearnerEmail[0][:4]
-            email = spitValue+str(empId)
-            id = "@"+LearnerEmail[1]
-            LearnerEmailId = email+id
-            print LearnerEmailId
-            
-            
-            cell4 = second_sheet.cell(2,4)
-            CreatorId = cell4.value
-            CreatorsId = CreatorId.split("#")
-            emp1 = CreatorsId[0]+"#"
-            ids1 = CreatorsId[1]
-            empId1 = int(ids1)+1
-            CreatorsEmpId = emp1+str(empId1)
-            print CreatorsEmpId
-            
-            
-            cell3 = second_sheet.cell(2,3)
-            CreateEmailId = cell3.value
-            CreatorEmail = CreateEmailId.split("@")
-            spitValue1 = CreatorEmail[0][:4]
-            email1 = spitValue1+str(empId1)
-            id1 = "@"+CreatorEmail[1]
-            CreatorEmailId = email1+id1
-            print CreatorEmailId
-            
-            cell6 = second_sheet.cell(3,4)
-            MasterAdminId = cell6.value
-            MasterAdminsId = MasterAdminId.split("#")
-            emp2 = MasterAdminsId[0]+"#"
-            ids2 = MasterAdminsId[1]
-            empId2 = int(ids2)+1
-            MasterAdminsEmpId = emp2+str(empId2)
-            print MasterAdminsEmpId
-            
-            cell5 = second_sheet.cell(3,3)
-            MasterEmail = cell5.value
-            MasterAdminEmail = MasterEmail.split("@")
-            spitValue2 = MasterAdminEmail[0][:4]
-            email2 = spitValue2+str(empId2)
-            id2 = "@"+MasterAdminEmail[1]
-            MasterAdminEmailId = email2+id2
-            print MasterAdminEmailId
-            
-            cell8 = second_sheet.cell(4,4)
-            LearningAdminId = cell8.value
-            LearningAdminsId = LearningAdminId.split("#")
-            emp3 = LearningAdminsId[0]+"#"
-            ids3 = LearningAdminsId[1]
-            empId3 = int(ids3)+1
-            LearningAdminsEmpId = emp3+str(empId3)
-            print LearningAdminsEmpId
-            
-            cell7 = second_sheet.cell(4,3)
-            LearningEmail = cell7.value
-            LearningAdminEmail = LearningEmail.split("@")
-            spitValue3 = LearningAdminEmail[0][:4]
-            email3 = spitValue3+str(empId3)
-            id3 = "@"+LearningAdminEmail[1]
-            LearningAdminEmailId = email3+id3
-            print LearningAdminEmailId
-            
-            wb = load_workbook(os.path.abspath(os.path.join(os.path.dirname(__file__),'TestData.xlsx')))
-            print (wb.sheetnames)
-        
-            sheet = wb['CreateuserfromUI']
-            
-            sheet.cell(row=2, column=4).value = LearnerEmailId
-            sheet.cell(row=2, column=5).value = LearnerEmpId
-            
-            sheet.cell(row=3, column=4).value = CreatorEmailId
-            sheet.cell(row=3, column=5).value = CreatorsEmpId
-            
-            sheet.cell(row=4, column=4).value = MasterAdminEmailId
-            sheet.cell(row=4, column=5).value = MasterAdminsEmpId
-            
-            sheet.cell(row=5, column=4).value = LearningAdminEmailId
-            sheet.cell(row=5, column=5).value = LearningAdminsEmpId
-            
-            wb.save(os.path.abspath(os.path.join(os.path.dirname(__file__),'TestData.xlsx')))
-            print "All User Data Updated in Excel" 
             
         finally:
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
@@ -276,11 +195,11 @@ class Delete_Tags_Attributes_Lessons:
             d.mainDeletetag()
             d.mainDelete_attribute()
             d.mainDeleteLessons()
-            d.mainUpdateExcelWithUserDetails()
-            
+            d.deactivateuser()
         finally:
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)
             url = cell.value
-            driver.get(url)            
+            driver.get(url)    
+            
