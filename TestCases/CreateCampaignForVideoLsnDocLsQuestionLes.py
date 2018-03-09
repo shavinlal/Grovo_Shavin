@@ -1,32 +1,29 @@
 '''
 Created on 01-Mar-2018
 
-@author: dattatraya
+@author: QA
 '''
 import os.path
 import time
-
+import traceback
 from BaseTestClass import driver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import xlrd
-
 from CampaignPageElements import CampPage
-
 
 class CreateCampaignForVideoLsnDocLsQuestionLes:
     
     def createCampaignVideoLessonDocLessonQuestionLesson(self,campaignTitle,campDescription,actualSuccessMessage,lessonName1,lessonName2,lessonName3,minPassingScore):
-        elements=CampPage()
         
+        elements=CampPage()
         wait=WebDriverWait(driver, 60)
         
         print "\n\nCreating Campaign"
         wait.until(EC.visibility_of_element_located((By.XPATH,elements.campaignButtonFromSideMenuXpath())))
         elements.campaignButtonFromSideMenu()
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,elements.createCampaignButtonXpath())))
 
         if elements.campaignsPageHeaderText()=="Campaigns":
@@ -40,10 +37,8 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
         wait.until(EC.visibility_of_element_located((By.XPATH,elements.createCampaignButtonXpath())))
         elements.createCampaignButton()
         
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,elements.Camp_titleXpath())))
         print "Create Campaign page is displayed"
-        
                   
         elements.titleTextField(campaignTitle)
         print "Title entered ::campTitle"
@@ -76,7 +71,6 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
         elements.waitUntilSearchedLessonDisplayed(lessonName3)
         elements.selectSearchedLesson(lessonName3)
         print "Second Third selected"
-       
         
         #waiting until add to campaign button is click able
         wait.until(EC.element_to_be_clickable((By.XPATH,elements.AddToCampaign_ButtonXpath())))
@@ -106,7 +100,6 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
         else:
             print "Lesson not displayed in grid"
             raise Exception
-            
         
         print "Making This as a Graded campaign"    
         elements.makeThisAsAGradedCampaign()
@@ -162,12 +155,7 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
             raise Exception
         
         # self.assertEqual("Create a new lesson", driver.find_element_by_xpath("/html/body/div[2]/div/div/div[1]/h3").text)
-
-        
-               
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div")))
-
         
         print "Clicked on Blank lesson"
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/div").click()
@@ -179,11 +167,9 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea").send_keys(lessonName)
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saving...']")))
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saved']")))
-        
         print "Entered lesson name ::"+lessonName
         
         print "Click on (+) icon"
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[2]/div/div/span").click()
         
         #Clicking on Video card
@@ -218,12 +204,7 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
 
         driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]").click()
         print "Clicked on publish button"
-        
-        
-        
         # verifying success message
-        
-        
         
         print "Verifying Success message"
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]")))
@@ -238,31 +219,22 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
             raise Exception
 
         print "Lesson published"
-        
-        
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
-
         
         #Verifying created lesson is displayed in list
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"(//tbody/tr/td[2]/a[.='"+lessonName+"'])[1]")))
 
         if driver.find_element_by_xpath("(//tbody/tr/td[2]/a[.='"+lessonName+"'])[1]").is_displayed():
-            
             print "Lesson is displayed in Grid ::"+lessonName
             
         else:
             print "Lesson not displaying in grid"
             raise Exception
-        
-        
-            
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
-       
+
         
     def lessonWithDocument(self,lessonname,documentPath,timeToUploaddocument):
+        
         print "This is lesson with document"
         
         wait=WebDriverWait(driver, timeToUploaddocument)
@@ -285,56 +257,40 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
             raise Exception
         
         # self.assertEqual("Create a new lesson", driver.find_element_by_xpath("/html/body/div[2]/div/div/div[1]/h3").text)
-
-        
-               
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div")))
-
         
         print "Clicked on Blank lesson"
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/div").click()
         
         print "Creating New lesson With one Text card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea")))
 
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea").send_keys(lessonname)
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saving...']")))
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saved']")))
-        
         print "Entered lesson name ::"+lessonname
         
         print "Click on (+) icon"
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[2]/div/div/span").click()
         
         #Clicking on Document card
         driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[2]/div[2]/div/div[2]/div[1]/div[4]/div[1]/div").click()
         
         time.sleep(4)
-        
         #Uploading Document
         print "Uploading Document"
         driver.find_element_by_css_selector('input[type="file"]').send_keys(documentPath)
         
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[2]/div/div/div[1]/div/a")))
-        
         documentContainerlocator_afterupload= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[2]/div/div/div[1]/div/a")
         
         if(documentContainerlocator_afterupload.is_displayed()):
-            
             print "Successfully uploaded the Document file"
-            
         else:
             print "Failed to upload the Document file"
             raise Exception
         
-        
-        
         print "Publishing lesson"
-        
         publishbutton=wait.until(EC.element_to_be_clickable((By.XPATH,"html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button")))
         
         driver.execute_script("arguments[0].click();",publishbutton)
@@ -344,12 +300,7 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
         driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]").click()
         print "Clicked on publish button"
         
-        
-        
         # verifying success message
-        
-        
-        
         print "Verifying Success message"
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]")))
 
@@ -363,13 +314,9 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
             raise Exception
 
         print "Lesson published"
-        
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
         
         #Verifying created lesson is displayed in list
-        
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"(//tbody/tr/td[2]/a[.='"+lessonname+"'])[1]")))
 
         if driver.find_element_by_xpath("(//tbody/tr/td[2]/a[.='"+lessonname+"'])[1]").is_displayed():
@@ -380,13 +327,11 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
             print "Lesson not displaying in grid"
             raise Exception
         
-        
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()  
 
 
-
     def lessonWithQuestion(self,lessonName,questionCard,ans1,ans2):
+        
         wait=WebDriverWait(driver, 60)
         wait.until(EC.visibility_of_element_located((By.XPATH,"//a[@href='/create/lessons']")))
 
@@ -407,27 +352,18 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
             raise Exception
         
         # self.assertEqual("Create a new lesson", driver.find_element_by_xpath("/html/body/div[2]/div/div/div[1]/h3").text)
-
-        
-               
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div")))
-
-        
         
         print "Clicked on Blank lesson"
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/div").click()
         
         print "Creating New lesson With one question card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea")))
 
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea").send_keys(lessonName)
-        
         print "Entered lesson name ::"+lessonName
         
         print "Click on (+) icon"
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[2]/div/div/span").click()
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[2]/div/div[2]/div[1]/div[5]/div[1]/div").click()
@@ -446,19 +382,13 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
         print "Entering Second answer"
         driver.find_element_by_xpath(".//*[@id='question-answer-input-1']").send_keys(ans2)
         print "Second Answer entered "
-        
-        
-
          
-        
         print "\nVerifying All the data entered is displaying in fields"
-        
         if questionArea.text==questionCard:
             print "Question ::"+questionCard
         else:
             print "Question is not displayed"
             raise Exception
-        
         
         if driver.find_element_by_xpath(".//*[@id='question-answer-input-0']").text==ans1:
             print "Answer 1 ::"+ans1
@@ -481,11 +411,8 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
             print "Radio button is not selected"
             raise Exception
         
-        
         publishbutton=wait.until(EC.element_to_be_clickable((By.XPATH,"html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button")))
-        
         driver.execute_script("arguments[0].click();",publishbutton)
-
         wait.until(EC.element_to_be_clickable((By.XPATH,"html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]")))
 
         driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]").click()
@@ -496,7 +423,6 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
 
         headerText=driver.find_element_by_xpath(".//*[@id='content']/div/div/div[2]/div/div/span[2]").text
         
-        
         if "You have successfully published" in headerText:
             print "Message '"+headerText+"' is displayed"
         else:
@@ -504,9 +430,7 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
             raise Exception
 
         print "Lesson published"
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
-        
         
         print "\nVerifying lesson displayed in Grid"
         wait.until(EC.visibility_of_element_located((By.XPATH,"(//tbody/tr/td[2]/a[.='"+lessonName+"'])[1]")))
@@ -518,7 +442,6 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
         else:
             print "Lesson not displaying in grid"
             raise Exception
-        
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
         
@@ -573,9 +496,6 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
         
         cell1 = first_sheet.cell(157,1)
         ans2 = cell1.value
-        
-        
-        
         try:
             print "\n\n----This test case creates campaign with----\n1. Video lesson\n2. Document lesson\n3. Question lesson\n"
             newobj=CreateCampaignForVideoLsnDocLsQuestionLes()
@@ -583,7 +503,12 @@ class CreateCampaignForVideoLsnDocLsQuestionLes:
             newobj.lessonWithDocument(lessonName2, documentPath, timeToUploaddocument)
             newobj.lessonWithQuestion(lessonName3, questionCard, ans1, ans2)
             newobj.createCampaignVideoLessonDocLessonQuestionLesson(campaignTitle, campDescription, actualSuccessMessage, lessonName1, lessonName2, lessonName3, minPassingScore)
-            
+        
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception
+        
         finally:
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)

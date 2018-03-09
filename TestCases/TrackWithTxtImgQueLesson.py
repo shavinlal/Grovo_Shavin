@@ -1,13 +1,11 @@
 '''
 Created on 23-Feb-2018
 
-@author: dattatraya
+@author: QA
 '''
-
 import os.path
 import time
-
-
+import traceback
 from BaseTestClass import driver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -15,24 +13,21 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import xlrd
 
-
 class TrackWithTxtImgQueLesson:
-    
-    
+     
     def textCard(self,textCard):
+        
         print "Text card"
+        wait=WebDriverWait(driver, 60) 
+       
         print "Click on (+) icon"
-            
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[2]/div/div/span").click()
-    
         driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[2]/div[2]/div/div[2]/div[1]/div[1]/div[1]").click()
             
         textCardelement=driver.find_element_by_xpath("//div[@class='text']/div/div[1]/div")
-            
         #Entering Text in Text card 
-            
         webdriver.ActionChains(driver).move_to_element(textCardelement).click().send_keys(textCard).perform()
-        wait=WebDriverWait(driver, 60)
+        
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saving...']")))
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saved']")))
             
@@ -96,11 +91,7 @@ class TrackWithTxtImgQueLesson:
         print "Entering Second answer"
         driver.find_element_by_xpath(".//*[@id='question-answer-input-1']").send_keys(ans2)
         print "Second Answer entered "
-        
-        
-
          
-        
         print "\nVerifying All the data entered is displaying in fields"
         
         if questionArea.text==questionCard:
@@ -108,7 +99,6 @@ class TrackWithTxtImgQueLesson:
         else:
             print "Question is not displayed"
             raise Exception
-        
         
         if driver.find_element_by_xpath(".//*[@id='question-answer-input-0']").text==ans1:
             print "Answer 1 ::"+ans1
@@ -145,13 +135,8 @@ class TrackWithTxtImgQueLesson:
             raise Exception
         
         # self.assertEqual("Create a new lesson", driver.find_element_by_xpath("/html/body/div[2]/div/div/div[1]/h3").text)
-
-        
-               
         
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div")))
-
-        
         print "Clicked on Blank lesson"
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/div").click()
         
@@ -164,8 +149,6 @@ class TrackWithTxtImgQueLesson:
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saved']")))
         
         print "Entered lesson name ::"+lessonName
-        
-        
         
         #Text Card
         objforThis=TrackWithTxtImgQueLesson()
@@ -192,8 +175,6 @@ class TrackWithTxtImgQueLesson:
             
         
         print "All Cards inserted"
-        
-        
         print "Publishing lesson"
         time.sleep(4)
         publishButton=wait.until(EC.element_to_be_clickable((By.XPATH,"html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button")))
@@ -205,12 +186,7 @@ class TrackWithTxtImgQueLesson:
         driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]").click()
         print "Clicked on publish button"
         
-        
-        
         # verifying success message
-        
-        
-        
         print "Verifying Success message"
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]")))
 
@@ -227,7 +203,6 @@ class TrackWithTxtImgQueLesson:
         
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
-        
         #Verifying created lesson is displayed in list
         
         wait.until(EC.visibility_of_element_located((By.XPATH,"(//tbody/tr/td[2]/a[.='"+lessonName+"'])[1]")))
@@ -282,16 +257,12 @@ class TrackWithTxtImgQueLesson:
         webdriver.ActionChains(driver).move_to_element(option).click(option).perform()
         
         driver.find_element_by_xpath(".//*[@id='description']").send_keys(" ")
-        
-        
         print "Adding created lesson"
         
         print "Clicking on Add lessons button"
-       
         driver.execute_script("window.scrollTo(0, 0);")
         addlessonbutton=driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div/button")
         addlessonbutton.click()
-        
         
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div/ul/li[1]/div[1]/div")))
         
@@ -336,11 +307,7 @@ class TrackWithTxtImgQueLesson:
         
         print "\nVerifying Creates track '"+titleOfTrack+"' is displayed in Tracks grid"
         
-        
-      
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[2]/div[3]/div/ul/li[2]/a").click()
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"//tbody/tr/td[2]/a[.='"+titleOfTrack+"']")))
         
         trackInGrid=driver.find_element_by_xpath("//tbody/tr/td[2]/a[.='"+titleOfTrack+"']").text
@@ -355,7 +322,6 @@ class TrackWithTxtImgQueLesson:
          
         
     def lessonWithTextImageQuestionCard(self):
-        
         
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         first_sheet = book.sheet_by_name('TrackCreate')
@@ -395,22 +361,21 @@ class TrackWithTxtImgQueLesson:
         
         cell4 = first_sheet.cell(48,3)
         ans2 = cell4.value
-     
+      
      
         try:
-            que=TrackWithTxtImgQueLesson()
+            que=TrackWithTxtImgQueLesson() 
             que.createLessonTxtImgQue(lessonname, textCard, Imagefilepath1, questionCard, ans1, ans2)
             que.createTrackwithTxtImgQue(titleOfTrack, Imagefilepath, description, tagName, lessonname, expectedSuccessText)
         
     
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception
+        
         finally:
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)
             url = cell.value
             driver.get(url)
-    
-
-        
-        
-
-

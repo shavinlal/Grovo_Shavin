@@ -1,27 +1,24 @@
 '''
 Created on 28-Feb-2018
 
-@author: dattatraya
+@author: QA
 '''
 import os
 import time
-
-
+import traceback
 from BaseTestClass import driver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import xlrd
-
 from CampaignPageElements import CampPage
-
 
 class CreateCampaignForQuestionLesson:
     
     def createCampaignForQuestionLesson(self,campaignTitle,campDescription,lessonName,actualSuccessMessage,numberOfAttempts):
-        elements=CampPage()
         
+        elements=CampPage()
         wait=WebDriverWait(driver, 60)
         
         print "\n\nCreating Campaign"
@@ -110,13 +107,7 @@ class CreateCampaignForQuestionLesson:
             print "Campaign detail page is not displayed"
             raise Exception
         
-        
         print "\nMaking this as a Graded campaign"
-        
-       
-        
-        
-        
         print "\n----Text Execution Completed----\n"
        
 
@@ -141,10 +132,6 @@ class CreateCampaignForQuestionLesson:
             raise Exception
         
         # self.assertEqual("Create a new lesson", driver.find_element_by_xpath("/html/body/div[2]/div/div/div[1]/h3").text)
-
-        
-               
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div")))
 
         
@@ -156,17 +143,13 @@ class CreateCampaignForQuestionLesson:
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea")))
 
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea").send_keys(lessonName)
-        
         print "Entered lesson name ::"+lessonName
-        
         print "Click on (+) icon"
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[2]/div/div/span").click()
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[2]/div/div[2]/div[1]/div[5]/div[1]/div").click()
         
         print "Question card selected"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='question-answer-input-0']")))
         print "Entering question"
         questionArea=driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/p/textarea")
@@ -180,11 +163,7 @@ class CreateCampaignForQuestionLesson:
         driver.find_element_by_xpath(".//*[@id='question-answer-input-1']").send_keys(ans2)
         print "First Answer entered "
         
-        
-         
-        
         print "\nVerifying All the data entered is displaying in fields"
-        
         if questionArea.text==questionCard:
             print "Question ::"+questionCard
         else:
@@ -204,9 +183,6 @@ class CreateCampaignForQuestionLesson:
             print "Answer 2 is not displayed"
             raise Exception
         
-       
-        
-        
         wait.until(EC.element_to_be_clickable((By.XPATH,"html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button")))
         
         publishbutton=driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button")
@@ -219,9 +195,7 @@ class CreateCampaignForQuestionLesson:
         
         print "\nVerifying Success message"
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]")))
-
         headerText=driver.find_element_by_xpath(".//*[@id='content']/div/div/div[2]/div/div/span[2]").text
-        
         
         if "You have successfully published" in headerText:
             print "Message '"+headerText+"' is displayed"
@@ -230,9 +204,7 @@ class CreateCampaignForQuestionLesson:
             raise Exception
 
         print "Lesson published"
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
-        
         
         print "\nVerifying lesson displayed in Grid"
         wait.until(EC.visibility_of_element_located((By.XPATH,"(//tbody/tr/td[2]/a[.='"+lessonName+"'])[1]")))
@@ -245,10 +217,7 @@ class CreateCampaignForQuestionLesson:
             print "Lesson not displaying in grid"
             raise Exception
         
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
-       
-
 
     def createCampaignQuestionLesson(self):
        
@@ -280,14 +249,17 @@ class CreateCampaignForQuestionLesson:
         cell1 = first_sheet.cell(52,1)
         numberOfAttempts = cell1.value
         
-        
-        
-        
         try:
             print "\n\n----This test case creates campaign with----\n1. Question lesson\n"
             newobj=CreateCampaignForQuestionLesson()
             newobj.lessonWithQuestion(lessonName, questionCard, ans1, ans2)
             newobj.createCampaignForQuestionLesson(campaignTitle, campDescription, lessonName, actualSuccessMessage, numberOfAttempts)
+        
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception
+        
         finally:
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)

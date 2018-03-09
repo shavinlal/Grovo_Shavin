@@ -1,27 +1,25 @@
 '''
 Created on 01-Mar-2018
 
-@author: dattatraya
+@author: QA
 '''
 
 import os.path
 import time
-
+import traceback
 from BaseTestClass import driver
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import xlrd
-
 from CampaignPageElements import CampPage
-
 
 class CreateCampaignForImageAndVideoLesson:
 
     def createCampaignImageAndVideoLessons(self,campaignTitle,campDescription,actualSuccessMessage,lessonName1,lessonName2):
-        elements=CampPage()
         
+        elements=CampPage()
         wait=WebDriverWait(driver, 60)
         
         print "\n\nCreating Campaign"
@@ -41,10 +39,8 @@ class CreateCampaignForImageAndVideoLesson:
         wait.until(EC.visibility_of_element_located((By.XPATH,elements.createCampaignButtonXpath())))
         elements.createCampaignButton()
         
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,elements.Camp_titleXpath())))
         print "Create Campaign page is displayed"
-        
                   
         elements.titleTextField(campaignTitle)
         print "Title entered ::campTitle"
@@ -71,7 +67,6 @@ class CreateCampaignForImageAndVideoLesson:
         elements.waitUntilSearchedLessonDisplayed(lessonName2)
         elements.selectSearchedLesson(lessonName2)
         print "Second lesson selected"
-       
         
         #waiting until add to campaign button is click able
         wait.until(EC.element_to_be_clickable((By.XPATH,elements.AddToCampaign_ButtonXpath())))
@@ -91,8 +86,6 @@ class CreateCampaignForImageAndVideoLesson:
             print "Lesson displayed in grid  ::"+lessonName2
         else:
             print "Lesson not displayed in grid"
-            
-            
         
         wait.until(EC.element_to_be_clickable((By.XPATH,elements.SaveAndExit_ButtonXpath())))
         #Clicking on save & exit button
@@ -141,12 +134,7 @@ class CreateCampaignForImageAndVideoLesson:
             raise Exception
         
         # self.assertEqual("Create a new lesson", driver.find_element_by_xpath("/html/body/div[2]/div/div/div[1]/h3").text)
-
-        
-               
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div")))
-
         
         print "Clicked on Blank lesson"
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/div").click()
@@ -185,20 +173,13 @@ class CreateCampaignForImageAndVideoLesson:
         
         
         publishbutton=wait.until(EC.element_to_be_clickable((By.XPATH,"html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button")))
-        
         driver.execute_script("arguments[0].click();",publishbutton)
 
         wait.until(EC.element_to_be_clickable((By.XPATH,"html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]")))
-
         driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]").click()
         print "Clicked on publish button"
         
-        
-        
         # verifying success message
-        
-        
-        
         print "Verifying Success message"
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]")))
 
@@ -212,7 +193,6 @@ class CreateCampaignForImageAndVideoLesson:
             raise Exception
 
         print "Lesson published"
-        
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
         
@@ -253,13 +233,8 @@ class CreateCampaignForImageAndVideoLesson:
             raise Exception
         
         # self.assertEqual("Create a new lesson", driver.find_element_by_xpath("/html/body/div[2]/div/div/div[1]/h3").text)
-
-        
-               
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div")))
 
-        
         print "Clicked on Blank lesson"
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/div").click()
         
@@ -272,7 +247,6 @@ class CreateCampaignForImageAndVideoLesson:
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saved']")))
         
         print "Entered lesson name ::"+lessonName
-        
         print "Click on (+) icon"
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[2]/div/div/span").click()
@@ -310,12 +284,7 @@ class CreateCampaignForImageAndVideoLesson:
         driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]").click()
         print "Clicked on publish button"
         
-        
-        
         # verifying success message
-        
-        
-        
         print "Verifying Success message"
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]")))
 
@@ -332,15 +301,12 @@ class CreateCampaignForImageAndVideoLesson:
         
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
-        
         #Verifying created lesson is displayed in list
         
         wait.until(EC.visibility_of_element_located((By.XPATH,"(//tbody/tr/td[2]/a[.='"+lessonName+"'])[1]")))
 
         if driver.find_element_by_xpath("(//tbody/tr/td[2]/a[.='"+lessonName+"'])[1]").is_displayed():
-            
             print "Lesson is displayed in Grid ::"+lessonName
-            
         else:
             print "Lesson not displaying in grid"
             raise Exception
@@ -378,20 +344,21 @@ class CreateCampaignForImageAndVideoLesson:
         cell1 = first_sheet.cell(140,1)
         timeToUploadVideo = cell1.value
         
-        
-        
         try:
             print "\n\n----This test case creates campaign with----\n1. Image lesson\n2. Video lesson\n"
             newobj=CreateCampaignForImageAndVideoLesson()
             newobj.lessonWithImage(lessonName1, Imagefilepath1)
             newobj.lessonWithVideo(lessonName2, videoPath, timeToUploadVideo)
             newobj.createCampaignImageAndVideoLessons(campaignTitle, campDescription, actualSuccessMessage, lessonName1, lessonName2)
-            
+        
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception   
+        
         finally:
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)
             url = cell.value
             driver.get(url)
-        
-        
  

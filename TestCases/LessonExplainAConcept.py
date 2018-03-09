@@ -1,7 +1,7 @@
 '''
 Created on Feb 23, 2018
 
-@author: Shavinlal E
+@author: QA
 '''
 from os.path import os
 import time
@@ -14,71 +14,52 @@ from selenium.webdriver.support.select import Select
 import xlrd
 from BaseTestClass import WebDriverWait
 from BaseTestClass import driver
-
+import traceback
 
 class LessonExplainAConcept:
     
-    
     def lessonExplainAConcepts(self,exNumberOfCards):   
         
-        wait=WebDriverWait(driver, 10)
-        wait.until(EC.visibility_of_element_located((By.XPATH,"//a[@href='/create/lessons']")))
-
-        print "Clicking on Lessons button from side menu"
-        driver.find_element_by_xpath("//a[@href='/create/lessons']").click()
-    
         wait=WebDriverWait(driver, 60)
+        wait.until(EC.visibility_of_element_located((By.XPATH,"//a[@href='/create/lessons']")))
+        print "Clicking on Lessons button from side menu"
+        
+        driver.find_element_by_xpath("//a[@href='/create/lessons']").click()
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div[3]/div[2]/div/header/div/button")))  
+        
         print "Clicking on Create Lesson button from lessons page"
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/header/div/button").click()
        
         # Going to verify EXPLAIN A CONCEPT Template
-        
         print "Going to verify the display of EXPLAIN A CONCEPT Teamplate"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[3]/div/div"))) 
         
         explainACoceptLocator =  driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[3]")
         
         if (explainACoceptLocator.is_displayed() and explainACoceptLocator.text == "EXPLAIN A CONCEPT"):
-            
             print "The EXPLAIN A CONCEPT Template is displaying in Create a new lesson pop up"
-        
         else:
-            
             print "Failed to find the EXPLAIN A CONCEPT Template in Create a new lesson pop up"
             raise Exception
         
         # Going to Click on EXPLAIN A CONCEPT Template
-        
         print "Clicking on EXPLAIN A CONCEPT Template"
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[3]/div/div").click()
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea"))) 
     
         # Going to check for the count of displayed lesson cards
-        
         cardsDisplayed=driver.find_elements_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[1]/div/div")
         
         actualNumberOfCards = len(cardsDisplayed)
         
-        
         if(actualNumberOfCards == exNumberOfCards):
-            
             print "The cards count is displaying as expected"+" "+str(exNumberOfCards)
-        
-        
         else:
-            
             print "Failed to find the card count as expected"
             raise Exception
         
-        
-        
         # Going to verify the title card content
-        
         print "Going to verify the title card content"
-        
         
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         first_sheet = book.sheet_by_name('MultiCardLesson')
@@ -87,49 +68,34 @@ class LessonExplainAConcept:
         exTitleCardContent = cell1.value
         
         actualTitleCardContent = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea").text
-        
-        
         print actualTitleCardContent
         
-        
         if (exTitleCardContent == actualTitleCardContent):
-            
             print "The title card label is displaying as expected"+" "+'"'+exTitleCardContent+'"'
-            
         else:
-            
             print "Failed to find the expected label in title card"
             raise Exception
         
         # Going to clear the Title present in the title card
-        
         print "Going to clear the lesson title"
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea").click()
-        
        
         for i in range(55):
         
             driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea").send_keys(Keys.BACKSPACE)
         
         print "Entering the title for lesson"
-        
         cell32= first_sheet.cell(30,0)
         title = cell32.value
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea").send_keys(title)
         
-        
         # Clicking on Second card
-    
         print "Clicking on Second card"
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[1]/div/div[2]").click()
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div"))) 
     
         # Going to verify the content in Second card
-        
         print "Going to verify the content in second card"
         
         cell2 = first_sheet.cell(21,1)
@@ -150,8 +116,6 @@ class LessonExplainAConcept:
         cell7 = first_sheet.cell(21,6)
         exFirstCardContent6 = cell7.value
         
-        
-    
         actualFirstCardContent1 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/span/span/span").text
         actualFirstCardContent2 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/div/span[1]/span/span").text
         actualFirstCardContent3 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/div/span[2]/span/span").text
@@ -181,35 +145,26 @@ class LessonExplainAConcept:
             raise Exception
       
         # Clicking on > icon 
-           
         print "Clicking on > arrow for Third card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[3]/div"))) 
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[3]/div").click()
         
         # Clicking on Third card
-        
         print "Clicking on Third card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[3]/div/div[1]"))) 
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[3]/div/div[1]").click()
-        
-       
         
         # Going to verify the content in Third card   
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div")))
         print "Going to verify the content in Third card"
-        
                 
         cell8 = first_sheet.cell(22,0)
         exSecondCardContent1 = cell8.value
         actualSecondCardContent1 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/span/span[1]/span").text
         
-        
         cell9 = first_sheet.cell(22,1)
         exSecondCardContent2 = cell9.value
         actualSecondCardContent2 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/span/span[2]/span").text
-        
         
         cell10 = first_sheet.cell(22,2)
         exSecondCardContent3 = cell10.value
@@ -238,60 +193,37 @@ class LessonExplainAConcept:
         
       
         # Clicking on < icon 
-           
         print "Clicking on < arrow for Fourth card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[1]/div"))) 
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[1]/div").click()
         
         # Clicking on Fourth card
-        
         print "Clicking on Fourth card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[4]/div/div[1]"))) 
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[4]/div/div[1]").click()
       
-        
         # Going to verify the content in Fourth card card   
-            
         print "Going to verify the content in Fourth card" 
-        
         cell12 = first_sheet.cell(23,0)
         exThirdCardContent = cell12.value
-        
-        
         
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/span/span/span"))) 
         
         actualThirdCardContent = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/span/span/span").text
-    
-        
         
         if (exThirdCardContent == actualThirdCardContent):
-            
             print "The Fourth card content is displaying as expected"
-            
-            
         else:
-            
             print "Failed to find the expected content in Fourth card" 
-            
                 
-        
         # Going to click on Fifth card
-        
         print "Clicking on Fifth card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[5]/div/div[1]")))
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[5]/div/div[1]").click()
-          
                
         # Verifying Fifth card labels
-        
         print "Going to verify the content in Fifth card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div")))
-        
         
         cell13= first_sheet.cell(24,0)
         exFourthCardContent1 = cell13.value
@@ -308,8 +240,6 @@ class LessonExplainAConcept:
         cell17= first_sheet.cell(24,4)
         exFourthCardContent5 = cell17.value
     
-    
-    
         actualFourthCardContent1= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/span/span[1]/span").text
         
         actualFourthCardContent2= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/span/span[2]/span").text
@@ -319,7 +249,6 @@ class LessonExplainAConcept:
         actualFourthCardContent4= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[3]/div/span").text
     
         actualFourthCardContent5= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[4]/div/span/span/span").text
-        
         
         if(exFourthCardContent1 == actualFourthCardContent1):
             
@@ -340,44 +269,30 @@ class LessonExplainAConcept:
             raise Exception
   
         # Going to click on Sixth card
-        
         print "Clicking on Sixth card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[6]/div/div[1]")))
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[6]/div/div[1]").click()
     
         # Verifying Sixth card labels
-    
         print "Going to verify the content in Sixth card"
-    
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/span/span/span")))
         actualFifthCradContent=  driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/span/span/span").text
     
-    
         cell18= first_sheet.cell(25,0)
         exFifthCardContent = cell18.value
-    
-       
-        
       
         if(exFifthCardContent == actualFifthCradContent):
-    
             print "The Sixth card content is displaying as expected"
-    
         else:
-            
             print "Failed to find the Sixth card expected content"
             
     
-    # Going to click on Seventh card
-    
+        # Going to click on Seventh card
         print "Clicking on Seventh card"
-    
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[7]/div/div[1]")))
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[7]/div/div[1]").click()
     
-    # Verifying the content in Seventh card 
-    
+        # Verifying the content in Seventh card 
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div")))
     
         cell19= first_sheet.cell(26,0)
@@ -388,8 +303,6 @@ class LessonExplainAConcept:
     
         cell21= first_sheet.cell(26,2)
         exSixthCardContent3 = cell21.value
-    
-      
         
         actualSixthCradContent1 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/span/span/span").text
         
@@ -397,7 +310,6 @@ class LessonExplainAConcept:
         
         actualSixthCradContent3 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[4]/div/span/span/span").text
       
-    
         if(exSixthCardContent1 == actualSixthCradContent1):
             
             if(exSixthCardContent2 == actualSixthCradContent2):
@@ -408,61 +320,41 @@ class LessonExplainAConcept:
             
             
         else:
-            
             print "Failed to find the expected content in Seventh card" 
             
             raise Exception
     
     
         print "Clicking on > icon"
-    
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div").click()
     
         # Going to Click on Eightth card
-    
         print "Clicking on Eightth card"
-    
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[8]/div/div[1]")))
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[8]/div/div[1]").click()
     
         # Going to verify the content in Eightth card
-        
         print "Going to verify the content in Eightth card"
         
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/span/span/span")))
-        
         
         cell22= first_sheet.cell(27,0)
         exSeventhCardContent1 = cell22.value
     
         actualSeventhCradContent1= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/span/span/span").text
         
-        
-        
         if(exSeventhCardContent1 == actualSeventhCradContent1):
-       
-                    
             print "The Eightth card content is displaying as expected"
-            
-            
         else:
-            
             print "Failed to find the expected content in Eightth card" 
-            
-        
         
         # Clicking on Nineth card
-        
         print "Clicking on Nineth card"
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[9]/div/div[1]").click()
         
         # Going to verify the content in Nineth card
-       
         print "Going to verify the content in Nineth card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div")))
-        
         
         cell23= first_sheet.cell(28,0)
         exEigtthCardContent1 = cell23.value
@@ -482,7 +374,6 @@ class LessonExplainAConcept:
         cell28= first_sheet.cell(28,5)
         exEigtthCardContent6 = cell28.value
     
-    
         actualEigtthCradContent1 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/span/span[1]/span").text
     
         actualEigtthCradContent2 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[1]/div/span/span[2]/span").text
@@ -494,8 +385,6 @@ class LessonExplainAConcept:
         actualEigtthCradContent5 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[4]/div/span/span/span").text
         
         actualEigtthCradContent6 =  driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div[6]/div/span/span/span").text
-    
-    
     
         if(exEigtthCardContent1 == actualEigtthCradContent1):
             
@@ -513,14 +402,11 @@ class LessonExplainAConcept:
             
             
         else:
-            
             print "Failed to find the expected content in Nineth card" 
             raise Exception
     
         # Clicking on Ten th card
-    
         print "Clicking on Ten th card "
-    
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[1]/div/div[2]/div/div[10]/div/div[1]").click()
         
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saving...']")))
@@ -528,11 +414,8 @@ class LessonExplainAConcept:
         
         
         # Going to verify the content in Ten th card
-       
         print "Going to verify the content in Tenth card"
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/p/textarea")))
-
         
         cell29= first_sheet.cell(29,0)
         exNinethCardContent1 = cell29.value
@@ -542,7 +425,6 @@ class LessonExplainAConcept:
         
         cell31= first_sheet.cell(29,2)
         exNinethCardContent3 = cell31.value
-        
     
         actualNinethCradContent1 = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/p/textarea").get_attribute("placeholder")
     
@@ -562,16 +444,11 @@ class LessonExplainAConcept:
             
             
         else:
-            
             print "Failed to find the expected content in Tenth card" 
             raise Exception
-       
-    
-    
     
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='question-answer-input-0']")))
         print "Entering question"
-        
       
         cell33= first_sheet.cell(1,2)
         questionCard = cell33.value
@@ -580,7 +457,6 @@ class LessonExplainAConcept:
         ele.send_keys(questionCard)
         
         print "Entering first answer"
-        
         cell34= first_sheet.cell(1,3)
         ans1 = cell34.value
         
@@ -601,6 +477,7 @@ class LessonExplainAConcept:
         
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         first_sheet = book.sheet_by_name('MultiCardLesson')
+        
         cell32= first_sheet.cell(30,0)
         lesson_title_ExplainAConcept= cell32.value
         #wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saving...']")))
@@ -608,45 +485,36 @@ class LessonExplainAConcept:
       
         wait.until(EC.element_to_be_clickable((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button")))
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button").click()
-        print "Clicking on READY TO PUBLISH button"
-         
         
+        print "Clicking on READY TO PUBLISH button"
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]")))
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]").click()
+       
         print "Clicking on PUBLISH button"
-        
         print "Validating the success message after publish"
-        wait=WebDriverWait(driver, 60) 
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]"))) 
         actual_success_message= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[2]/div/div/span[2]").text
         expected_success_message= "You have successfully published \"" + lesson_title_ExplainAConcept + "\""; 
         
         if(expected_success_message==actual_success_message):
-            
             print "The success message is displaying as"+ " "+expected_success_message
-            
         else:
-            
             print "The success message is not displaying as expected"
             
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
         print "Clicking on EXIT button"
-        
-        
              
         print "Verifying lesson displayed in Grid"
         wait.until(EC.visibility_of_element_located((By.XPATH,"(//tbody/tr/td[2]/a[.='"+lesson_title_ExplainAConcept+"'])[1]")))
 
         if driver.find_element_by_xpath("(//tbody/tr/td[2]/a[.='"+lesson_title_ExplainAConcept+"'])[1]").is_displayed():
-            
             print "Lesson is displayed in Grid ::"+lesson_title_ExplainAConcept
-            
         else:
             print "Lesson not displaying in grid"
         
-        
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
+        
+        print "TEST CASE EXECUTED SUCCESSFULLY COMPLETED"
     
     
     def lessonExplainAConceptMain(self): 
@@ -656,16 +524,19 @@ class LessonExplainAConcept:
             obj1.lessonExplainAConcepts(10)
             obj1.publishLesson()
         
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception
+        
         finally:    
-            print "clicking on Home"
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
             first_sheet = book.sheet_by_name('Login_Credentials')
             print("Fetching the Attribute Name from Excel Sheet\n")
+            
             # read a cell
             cell = first_sheet.cell(1,1)
             HomeURL = cell.value
             print HomeURL
             driver.get(HomeURL)
-            wait=WebDriverWait(driver, 80)
-            wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
             print "Home Page Loaded"

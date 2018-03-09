@@ -1,7 +1,7 @@
 '''
 Created on 27-Feb-2018
 
-@author: dattatraya
+@author: QA
 '''
 import os
 from BaseTestClass import driver
@@ -9,15 +9,14 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import xlrd
-
+import traceback
 
 class CampaignPageDisplay:
     
-    
     def campaignPage(self,actualPageHeaderText,actualTextBelowHeader,actualCreateCampaignButtonText,actualGridText,actualTitleCol,actualDurationCol,actualupdatedByCol,
                        actualactionsCol,actualEditLinkText,actualduplicateLinkText,actualassignLinkText):
-        print "\n----Campaign page display----"
         
+        print "\n----Campaign page display----"
         wait=WebDriverWait(driver, 60)
         wait.until(EC.visibility_of_element_located((By.XPATH,"//a[@href='/plan/campaigns'][1]")))
         
@@ -60,18 +59,13 @@ class CampaignPageDisplay:
             print "Create Campaign button is not displayed"
             raise Exception
         
-        
-        
         if createCampaignButtonText==actualCreateCampaignButtonText:
             print "Create Campaign button is displayed with Text ::"+createCampaignButtonText
-            
         else:
             print "Create Campaign button text displayed is invalid"
             raise Exception
         
         print "\nChecking Campaigns Grid header text"
-        
-        
         gridText=driver.find_element_by_xpath("//div/div/h3").text
         
         if actualGridText in gridText:
@@ -81,27 +75,21 @@ class CampaignPageDisplay:
             print "Grid Header Text is not displayed properly"
             raise Exception
         
-        
-        
         print "\nChecking all the Table column header text"
         
         titleCol=driver.find_element_by_xpath("//table/thead/tr/th[1]").text
         if titleCol == actualTitleCol:
             print "Column 1 text ::"+titleCol
-            
         else:
             print "Column 1 text is not displayed"
             raise Exception
         
-        
         durationCol=driver.find_element_by_xpath("//thead/tr/th[2]").text
         if durationCol == actualDurationCol:
             print "Column 2 text ::"+durationCol
-            
         else:
             print "Column 2 text is not displayed"
             raise Exception
-        
         
         updatedByCol=driver.find_element_by_xpath("//thead/tr/th[3]").text
         if updatedByCol == actualupdatedByCol:
@@ -119,9 +107,6 @@ class CampaignPageDisplay:
             print "Column 4 text is not displayed"
             raise Exception
         
-        
-        
-        
         print "\nChecking for different links displaying in Actions column"
         
         editLink=driver.find_element_by_xpath("//tr[1]/td[4]/a[1]")
@@ -132,7 +117,6 @@ class CampaignPageDisplay:
         else:
             print "Invalid Edit link is displayed"
             raise Exception
-        
         
         duplicateLink=driver.find_element_by_xpath("//tr[1]/td[4]/a[2]")
         duplicateLinkText=duplicateLink.text
@@ -152,9 +136,6 @@ class CampaignPageDisplay:
         else:
             print "Invalid Assign link is displayed"
             raise Exception
-        
-        
-        
         print "\nAll UI elements in Campaigns page displayed properly"
         
         
@@ -199,7 +180,14 @@ class CampaignPageDisplay:
         try:
             camp=CampaignPageDisplay()
             camp.campaignPage(actualPageHeaderText, actualTextBelowHeader, actualCreateCampaignButtonText, actualGridText, actualTitleCol, actualDurationCol, actualupdatedByCol, actualactionsCol, actualEditLinkText, actualduplicateLinkText, actualassignLinkText)
+         
             print "\n----Execution Completed----\n"
+        
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception
+        
         finally:
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)

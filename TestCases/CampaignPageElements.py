@@ -1,16 +1,15 @@
 '''
 Created on 27-Feb-2018
 
-@author: dattatraya
+@author: QA
 '''
 
 import time
-
+import traceback
 from BaseTestClass import driver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
-
 
 class CampPage:
     
@@ -117,9 +116,3 @@ class CampPage:
         
         driver.find_element_by_xpath(".//*[@id='input-campaign-attempts']").clear()
         driver.find_element_by_xpath(".//*[@id='input-campaign-attempts']").send_keys(str(numberOfAttempts))
-        
-       
-        
-       
-        
-        

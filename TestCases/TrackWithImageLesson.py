@@ -1,22 +1,19 @@
 '''
 Created on 23-Feb-2018
 
-@author: dattatraya
+@author: QA
 '''
 import os.path
 import time
-
+import traceback
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import xlrd
-
-
 from BaseTestClass import driver
 
 class TrackWithImageLesson:
-    
     
     def lessonWithImage(self,lessonName,Imagefilepath1):
         
@@ -40,12 +37,7 @@ class TrackWithImageLesson:
             raise Exception
         
         # self.assertEqual("Create a new lesson", driver.find_element_by_xpath("/html/body/div[2]/div/div/div[1]/h3").text)
-
-        
-               
-        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div")))
-
         
         print "Clicked on Blank lesson"
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/div").click()
@@ -59,7 +51,6 @@ class TrackWithImageLesson:
         wait.until(EC.visibility_of_element_located((By.XPATH,"//span[@class='lesson-editor-status' and .='Saved']")))
         
         print "Entered lesson name ::"+lessonName
-        
         print "Click on (+) icon"
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[2]/div[2]/div/div/span").click()
@@ -82,9 +73,7 @@ class TrackWithImageLesson:
             print "Failed to upload the image1 file"
             raise Exception
         
-        
         time.sleep(4)
-        
         publishButton=wait.until(EC.element_to_be_clickable((By.XPATH,"html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/button")))
 
         publishButton.click()
@@ -94,12 +83,7 @@ class TrackWithImageLesson:
         driver.find_element_by_xpath("html/body/div/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]").click()
         print "Clicked on publish button"
         
-        
-        
         # verifying success message
-        
-        
-        
         print "Verifying Success message"
         wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]")))
 
@@ -114,13 +98,10 @@ class TrackWithImageLesson:
 
         print "Lesson published"
         
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
-        
         #Verifying created lesson is displayed in list
         
         wait.until(EC.visibility_of_element_located((By.XPATH,"(//tbody/tr/td[2]/a[.='"+lessonName+"'])[1]")))
-
         if driver.find_element_by_xpath("(//tbody/tr/td[2]/a[.='"+lessonName+"'])[1]").is_displayed():
             
             print "Lesson is displayed in Grid ::"+lessonName
@@ -132,11 +113,11 @@ class TrackWithImageLesson:
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
         
         
-        
     def createTrackwithImage(self,titleOfTrack,Imagefilepath,description,tagName,lessonname,expectedSuccessText):
-        print "Creating track with one lesson contains Text Card"
         
         wait=WebDriverWait(driver, 120)
+        print "Creating track with one lesson contains Text Card"
+        
         wait.until(EC.visibility_of_element_located((By.XPATH,"//a[@href='/create/lessons']")))
         
         print "Clicking on Lessons button from side menu"
@@ -146,7 +127,6 @@ class TrackWithImageLesson:
         driver.find_element_by_xpath("//a[@href='/create/tracks']").click()
         
         createTrackbutton=wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div[3]/div[2]/div/header/div/a")))
-        
         createTrackbutton.click()
         
         print "Entering title"
@@ -163,7 +143,6 @@ class TrackWithImageLesson:
         driver.find_element_by_xpath(".//*[@id='description']").send_keys(description)
         print "Description entered ::"+description 
         
-        
         print "Adding tag"
         addTags=driver.find_element_by_xpath("//div[@class='Select-placeholder']")
         webdriver.ActionChains(driver).move_to_element(addTags).click().send_keys(tagName).perform()
@@ -172,16 +151,12 @@ class TrackWithImageLesson:
         webdriver.ActionChains(driver).move_to_element(option).click(option).perform()
         
         driver.find_element_by_xpath(".//*[@id='description']").send_keys(" ")
-        
-        
         print "Adding created lesson"
         
         print "Clicking on Add lessons button"
-       
         driver.execute_script("window.scrollTo(0, 0);")
         addlessonbutton=driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/div/div[2]/div[2]/div[1]/div/div/div/button")
         addlessonbutton.click()
-       
        
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/div/ul/li[1]/div[1]/div")))
         
@@ -225,10 +200,6 @@ class TrackWithImageLesson:
         
         
         print "Verifying Creates track '"+titleOfTrack+"' is displayed in Tracks grid"
-        
-        
-      
-        
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[2]/div[3]/div/ul/li[2]/a").click()
         
         wait.until(EC.visibility_of_element_located((By.XPATH,"//tbody/tr/td[2]/a[.='"+titleOfTrack+"']")))
@@ -242,22 +213,8 @@ class TrackWithImageLesson:
             raise Exception
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
        
     def lessonWithImageCard(self):
-        
         
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         first_sheet = book.sheet_by_name('TrackCreate')
@@ -276,25 +233,25 @@ class TrackWithImageLesson:
         
         cell2 = first_sheet.cell(18,3)
         lessonname= cell2.value
-        
       
         cell2 = first_sheet.cell(22,1)
         expectedSuccessText= cell2.value
-        
        
         cell2 = first_sheet.cell(19,3)
         ImagefilepathforLesson = cell2.value
-        
         
         try:
             img=TrackWithImageLesson()
             img.lessonWithImage(lessonname, ImagefilepathforLesson)
             img.createTrackwithImage(titleOfTrack, Imagefilepath, description, tagName, lessonname, expectedSuccessText)
         
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception
+        
         finally:
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)
             url = cell.value
             driver.get(url)
-
-

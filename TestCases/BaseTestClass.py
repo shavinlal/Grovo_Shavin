@@ -1,7 +1,7 @@
 '''
 Created on 21-Feb-2018
 
-@author: Shilpa
+@author: QA
 '''
 import time
 import xlrd
@@ -19,41 +19,29 @@ class BaseTestClass:
     def userLogin(self):
     
         print "Opening Browser"
-        
         driver.maximize_window()
         
-        print "Reading data from excel sheet"
+        print "Reading Login Credentials from excel sheet"
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         
-        # print number of sheets
-        print("Number of WorkSheets :")
-        print book.nsheets
-    
-        # print sheet names
-        #print("Name of WorkSheets :")
-        #print book.sheet_names()
-        
-        # get the first worksheet
+        print ("Fetching Sheet Name\n")
         first_sheet = book.sheet_by_name('Login_Credentials')
-        
-        # read a row
-        #print("First Row Data in 1st WorkSheet :")
-        #print first_sheet.row_values(0)
         
         print("Fetching the URL, username and password from Excel Sheet\n")
         # read a cell
         cell = first_sheet.cell(1,1)
         url = cell.value
-        print url
+        print "Grovo URL is : %s." % url
         
         cell = first_sheet.cell(3,1)
         username = cell.value
-        print username
+        print "User Name is : %s." % username
         
         cell = first_sheet.cell(3,2)
         password = cell.value
-        print password  
+        print "Password is : %s." % password
         
+        print ("Redirecting to specified URL\n")
         driver.get(url)
         element = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "password")))
         if driver.title == "Grovo":
@@ -70,14 +58,8 @@ class BaseTestClass:
         element.send_keys(password)
         
         element.send_keys(Keys.TAB)
-        print "Clicking on Sign_In button"
+        print ("Clicking on Sign_In button\n")
         driver.find_element_by_xpath("//*[@id='submitButton']").click()
         
-        print "Successfully Loged Into Grovo Application"
+        print "Successfully LogIn to Grovo Application"
         time.sleep(5)
-        
-        
-
-
-
-    
