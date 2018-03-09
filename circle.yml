@@ -5,7 +5,7 @@ test:
     #- pybot -n non-critical -d "robot_results" ./TestSuite1.robot 
     - npm install -g newman
     - newman run ./TestCases/APITestCasecollection.postman_collection.json 
-    #- pip install -r requirements.txt
+    - pip install -r requirements.txt
     - pybot -n non-critical -d "robot_results" ./APITestSuite.robot
     #- pybot -d ./TestData ./TestSuite.robot 
     
@@ -17,7 +17,7 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "7 5 * * *"
+          cron: "49 7 * * *"
           filters:
             branches:
               only:
