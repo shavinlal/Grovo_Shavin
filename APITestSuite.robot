@@ -1,7 +1,7 @@
 *** Settings ***
 Library   TestCases/BaseTestClass.py
-Library   BasicInformationValidData_27.py
-Library   BasicInformationWithDirectRole_28.py
+Library   TestCases/BasicInformationValidData_27.py
+Library   TestCases/BasicInformationWithDirectRole_28.py
 
 
 
