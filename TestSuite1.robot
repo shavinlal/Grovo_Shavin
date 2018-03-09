@@ -53,7 +53,6 @@ TC0 - User Login
 TC1 - Delete_Tags_Attributes_Lessons
     Main Delete All
 
-
 #Test cases for Lesson creation
 TC2 - BlankLessonOne
     Blank Lesson One Main
