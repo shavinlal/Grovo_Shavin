@@ -113,8 +113,8 @@ TC19 - CreateCampaignForTxtVidQuesLesson
 TC20 - CreateCampaignForVidDocQueLesson
     Create Campaign With Lesson Video Document Question
 
-TC21 - CreateCampaignForFourLessonsOne
-    Create Campaign With Four Lessons One
+#TC21 - CreateCampaignForFourLessonsOne
+ #   Create Campaign With Four Lessons One
 
 TC22 - CreateCampaignForFourLessonsTwo
     Create Campaign With Four Lessons Two
@@ -128,14 +128,14 @@ TC24 - CreateCampaignForTextAndImageLesson
 TC25 - CreateCampaignForImageAndVideoLesson
     Create Campaign With Image Lesson Video Lesson
 
-TC26 - CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons
-    Create Campaign With Three Lessons
+#TC26 - CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons
+ #   Create Campaign With Three Lessons
 
 TC27 - CreateCampaignForVideoLsnDocLsQuestionLes
     Create Campaign With Video Lesson Document Lesson Question Lesson  
    
-TC28 - CampaignPageDisplay
-    Campaigns Page Display Main
+#TC28 - CampaignPageDisplay
+ #   Campaigns Page Display Main
 
 
 
