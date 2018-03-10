@@ -140,14 +140,14 @@ TC28 - CampaignPageDisplay
 
 
 #Test cases for User Creation with standard roles
-TC29 - CreateCreator
-    Create Creator User And Validation
+#TC29 - CreateCreator
+ #   Create Creator User And Validation
     
-TC30 - CreateLearner
-    Create Learner User And Validation
+#TC30 - CreateLearner
+ #   Create Learner User And Validation
     
-TC31 - CreateLearnerAdministrator
-    Create Learner Admin User And Validation
+#TC31 - CreateLearnerAdministrator
+ #   Create Learner Admin User And Validation
     
-TC32 - CreateMasterAdmin
-    Create Master Admin User And Validation
+#TC32 - CreateMasterAdmin
+ #   Create Master Admin User And Validation
