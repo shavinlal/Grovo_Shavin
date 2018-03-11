@@ -119,8 +119,8 @@ TC20 - CreateCampaignForVidDocQueLesson
 TC22 - CreateCampaignForFourLessonsTwo
     Create Campaign With Four Lessons Two
 
-TC23 - CreateCampaignForFourLessonsThree
-    Create Campaign With Four Lessons Three
+#TC23 - CreateCampaignForFourLessonsThree
+   # Create Campaign With Four Lessons Three
 
 TC24 - CreateCampaignForTextAndImageLesson
     Create Campaign With Text Lesson Image Lesson
