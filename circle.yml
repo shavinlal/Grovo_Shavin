@@ -3,7 +3,7 @@ test:
     - pip install -r requirements.txt
     #- pybot -n non-critical -d "robot_results" ./TestSuite1.robot 
     - robot -T -d "robot_results" -n noncritical ./TestSuite1.robot
-    - robot --rerunfailed "robot_results"/output*.xml --output "robot_results"/rerun.xml tests  # then re-execute failing
+    - robot --rerunfailed "robot_results"/output*.xml --output "robot_results"/rerun.xml ./TestSuite1.robot  # then re-execute failing
     - rebot --merge ./"robot_results"/output*.xml ./"robot_results"/rerun.xml                       # finally merge results
     #- npm install -g newman
     #- newman run ./APITestCasecollection.postman_collection.json 
