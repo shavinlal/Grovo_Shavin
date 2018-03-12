@@ -6,7 +6,6 @@ Created on 23-Feb-2018
 from operator import contains
 import os.path
 
-from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -14,7 +13,7 @@ from selenium.webdriver.support import wait, expected_conditions as EC
 from selenium.webdriver.support.select import Select
 import xlrd
 
-
+from BaseTestClass import BaseTestClass
 from BaseTestClass import WebDriverWait
 from BaseTestClass import driver
 
@@ -23,7 +22,7 @@ class BasicInformationValidData_27:
     
     def userCreationWithValidData(self):
         print "Reading data from excel sheet"
-        book=xlrd.open_workbook(os.path.join('D:\_WorkSpace\EclipseWS\PythonAutomation\src\TestData.xlsx'))
+        book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         sheet1=book.sheet_by_name('API testing')
         print("Fetching the LastName from Excel Sheet\n")
         #Read from Excel to search
@@ -88,7 +87,7 @@ class BasicInformationValidData_27:
         wait.until(EC.visibility_of_element_located((By.ID,"username")))
     def Logincreateuser(self):    
         print "Reading data from excel sheet"
-        book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
+        book=xlrd.open_workbook(os.path.join('D:\_WorkSpace\EclipseWS\PythonAutomation\src\TestData.xlsx'))
         sheet1=book.sheet_by_name('API testing')
         cell2 = sheet1.cell(1,2)
         Currentpassword = cell2.value
@@ -122,7 +121,8 @@ class BasicInformationValidData_27:
                 print"User is able to login and Dashboard is displayed.."
         else:
             print"User not able to login.."
-            raise Exception    
+            raise Exception
+            print Exception    
         wait=WebDriverWait(driver, 80)
         print "Sign out "
         ele =driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[1]/nav/div[2]/a/span[3]")
@@ -131,11 +131,14 @@ class BasicInformationValidData_27:
         driver.execute_script('arguments[0].click()',elem)
         
     def BasicInformationValidData(self):
-        obj=BasicInformationValidData_27()  
-        obj.userCreationWithValidData() 
-        obj.Logincreateuser()  
-         
-           
-
-     
-        print "Test executed successfully"
+        try:
+            obj=BasicInformationValidData_27()
+            obj.userCreationWithValidData()
+            obj.Logincreateuser() 
+            
+        finally:
+            book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
+            second_sheet = book.sheet_by_name('Login_Credentials')
+            cell = second_sheet.cell(1,1)
+            url = cell.value
+            driver.get(url) 

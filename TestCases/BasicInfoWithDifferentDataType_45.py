@@ -1,12 +1,12 @@
 '''
-Created on 07-Mar-2018
+Created on 23-Feb-2018
 
 @author: geethukn
 '''
 from operator import contains
 import os.path
 
-from selenium import webdriver
+
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -19,19 +19,20 @@ from BaseTestClass import WebDriverWait
 from BaseTestClass import driver
 
 
-class BasicInformationWithDirectRole_28:
+
+class BasicInfoWithDifferentDataType_45:
     
-    def userCreationWithDirectRole(self):
+    def userCreationWithDifferentDataType(self):
         print "Reading data from excel sheet"
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         sheet1=book.sheet_by_name('API testing')
-        print("Fetching the LastName from Excel to search")
+        print("Fetching the LastName from Excel Sheet\n")
         #Read from Excel to search
-        cell1 = sheet1.cell(2,1)
+        cell1 = sheet1.cell(5,1)
         searchlastName = cell1.value
         #Clicking on Admin Menu from Grovo Application
-        driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/a").click()
         wait=WebDriverWait(driver,80)
+        driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/a").click()
         wait.until(EC.visibility_of_element_located((By.ID,"search-users")))
         driver.find_element_by_id("search-users").send_keys(searchlastName)
         #To click on FirstName link
@@ -47,7 +48,7 @@ class BasicInformationWithDirectRole_28:
         else:
             print"FirstName is present :" +firstName
         #To verify LastName field 
-        print"Verify LastName field"  
+        print"Verify LastName field"
         lastNamelocator =driver.find_element_by_id("create-edit-user-search-lastName")
         lastName=lastNamelocator.get_attribute("value")
         if not lastName:
@@ -71,15 +72,6 @@ class BasicInformationWithDirectRole_28:
             print"Employee ID field is empty"
         else:
             print"Employee ID is present : "+employeeid
-        #To verify Direct Roles field 
-        print"Verify Direct Roles field"  
-        wait.until(EC.visibility_of_element_located((By.XPATH,"(//span[@role='option'])[1]")))
-        DirectRoleslocator =driver.find_element_by_xpath("(//span[@role='option'])[1]")
-        DirectRoles=DirectRoleslocator.text
-        if not DirectRoles:
-            print"Direct Roles field is empty"
-        else:
-            print"Direct Roles is present : "+DirectRoles
         #LogOut function      
         driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div/nav/div[2]/a/span[3]").click()
         print "Clicked on SignOut Dropdown"
@@ -90,9 +82,9 @@ class BasicInformationWithDirectRole_28:
         print "Reading data from excel sheet"
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         sheet1=book.sheet_by_name('API testing')
-        cell2 = sheet1.cell(2,2)
+        cell2 = sheet1.cell(5,2)
         Currentpassword = cell2.value
-        cell3 = sheet1.cell(2,3)
+        cell3 = sheet1.cell(5,3)
         Newpassword = cell3.value
         wait=WebDriverWait(driver, 80)
         print "Grovo Sign-In page is displayed"
@@ -110,32 +102,34 @@ class BasicInformationWithDirectRole_28:
         driver.find_element_by_id("newPassword").send_keys(Newpassword)
         print "New Password is entered :"+Newpassword
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[1]/div[2]/button")))
-        wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[1]/div[2]/button").click()
-        Home=driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]")
-        Library = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[2]")
-        Create = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]")
-        Campaign = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[4]")
-        if(Home.is_displayed() and Library.is_displayed() and Create.is_displayed() and Campaign.is_displayed()):
-            print "User with Creator Role is able to login and HOME,LIBRARY,CREATE and CAMPAIGN is displaying.."
-        else:
-            print"Home page not displayed"
-            raise Exception
-            print Exception
+        wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div[1]/div/nav/div[1]/a[2]/span")))
+        expectedresult = "Home"
+        expectedresult1="Library"
+        actualresult = driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div/nav/div[1]/a[2]/span").text
+        actualresult1 = driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div/nav/div[1]/a[3]/span").text
+        if(expectedresult == actualresult):
+            if(expectedresult1==actualresult1):
+                print"User is able to login and Dashboard is displayed.."
+            else:
+                print"User not able to login.."
+                raise Exception
+                print Exception
         print "Sign out "
+    
         ele =driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[1]/nav/div[2]/a/span[3]")
         driver.execute_script('arguments[0].click()',ele)
         elem=driver.find_element_by_xpath("html/body/div/div/div[1]/div[2]/div[2]/a")
         driver.execute_script('arguments[0].click()',elem)
-        
-    def BasicInformationWithDirectRole(self):
+            
+    def BasicInformationValidData(self):
         try:
-            obj=BasicInformationWithDirectRole_28()  
-            obj.userCreationWithDirectRole()
-            obj.Logincreateuser()
+            obj=BasicInfoWithDifferentDataType_45()
+            obj.userCreationWithDifferentDataType()
+            obj.Logincreateuser()  
         finally:
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)
             url = cell.value
-            driver.get(url)
+            driver.get(url) 

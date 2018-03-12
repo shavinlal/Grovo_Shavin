@@ -6,7 +6,6 @@ Created on 07-Mar-2018
 from operator import contains
 import os.path
 
-from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
@@ -19,15 +18,15 @@ from BaseTestClass import WebDriverWait
 from BaseTestClass import driver
 
 
-class BasicInformationWithDirectRole_28:
+class BasicInfoPasswordCreation_35:
     
-    def userCreationWithDirectRole(self):
+    def testPasswordCreationForUser(self):
         print "Reading data from excel sheet"
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         sheet1=book.sheet_by_name('API testing')
         print("Fetching the LastName from Excel to search")
         #Read from Excel to search
-        cell1 = sheet1.cell(2,1)
+        cell1 = sheet1.cell(4,1)
         searchlastName = cell1.value
         #Clicking on Admin Menu from Grovo Application
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/a").click()
@@ -90,9 +89,9 @@ class BasicInformationWithDirectRole_28:
         print "Reading data from excel sheet"
         book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
         sheet1=book.sheet_by_name('API testing')
-        cell2 = sheet1.cell(2,2)
+        cell2 = sheet1.cell(4,2)
         Currentpassword = cell2.value
-        cell3 = sheet1.cell(2,3)
+        cell3 = sheet1.cell(4,3)
         Newpassword = cell3.value
         wait=WebDriverWait(driver, 80)
         print "Grovo Sign-In page is displayed"
@@ -130,9 +129,9 @@ class BasicInformationWithDirectRole_28:
         
     def BasicInformationWithDirectRole(self):
         try:
-            obj=BasicInformationWithDirectRole_28()  
-            obj.userCreationWithDirectRole()
-            obj.Logincreateuser()
+            obj=BasicInfoPasswordCreation_35()
+            obj.testPasswordCreationForUser()
+            obj.Logincreateuser()  
         finally:
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
             second_sheet = book.sheet_by_name('Login_Credentials')
