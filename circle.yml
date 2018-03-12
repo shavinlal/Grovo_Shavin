@@ -2,7 +2,9 @@ test:
   override:
     - pip install -r requirements.txt
     #- pybot -n non-critical -d "robot_results" ./TestSuite1.robot 
-    - robot -T -d ./TestData -n noncritical ./TestSuite1.robot
+    - robot -T -d ./TestData/"robot_results" -n noncritical ./TestSuite1.robot
+    - robot --rerunfailed output-20180312-035243.xml --output rerun.xml tests  # then re-execute failing
+    - rebot --merge output-20180312-035243.xml rerun.xml                       # finally merge results
     #- npm install -g newman
     #- newman run ./APITestCasecollection.postman_collection.json 
     #- pip install -r requirements.txt
