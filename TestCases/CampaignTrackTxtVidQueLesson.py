@@ -4,6 +4,7 @@ Created on 07-Mar-2018
 @author: dattatraya
 '''
 import os.path
+import traceback
 
 from BaseTestClass import driver
 from selenium.webdriver.common.by import By
@@ -313,7 +314,12 @@ class CampaignTrackTxtVidQueLesson:
             #Campaign Creation
             
             obj2.campWithTrackTxtVidQue(campaignTitle, campDescription, trackName, actualSuccessMessage, minPassingScore, numberOfAttempts, ownDuration)
-            
+          
+          
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception  
           
         finally:  
             second_sheet = book.sheet_by_name('Login_Credentials')

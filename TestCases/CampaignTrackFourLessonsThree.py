@@ -5,6 +5,7 @@ Created on 08-Mar-2018
 '''
 import os.path
 import time
+import traceback
 
 from BaseTestClass import driver
 from selenium import webdriver
@@ -16,6 +17,7 @@ import xlrd
 from CampaignPageElements import CampPage
 from CreateLessonDifferentCards import CreateLessonDifferentCards
 from CreateLessonDifferentLessons import CreateLessonDifferentLessons
+
 
 class CampaignTrackFourLessonsThree:
     
@@ -605,11 +607,16 @@ class CampaignTrackFourLessonsThree:
             #Campaign Creation
             
             obj2.campWithTrackFourLessonsThree(campaignTitle, campDescription, titleOfTrack, actualSuccessMessage, ownDuration, minPassingScore, numberOfAttempts)
-          
+         
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception
+         
         finally:  
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)
             url = cell.value
             driver.get(url)
     
- 
+    

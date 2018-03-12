@@ -4,6 +4,7 @@ Created on 07-Mar-2018
 @author: dattatraya
 '''
 import os.path
+import traceback
 
 from BaseTestClass import driver
 from selenium.webdriver.common.by import By
@@ -156,7 +157,11 @@ class CampaignCreateTrackWithTextLesson:
             #Campaign Creation
             obj2=CampaignCreateTrackWithTextLesson()
             obj2.campWithTrackTextlesson(campaignTitle, campDescription, titleOfTrack, actualSuccessMessage)
-            
+         
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception   
           
         finally:  
             second_sheet = book.sheet_by_name('Login_Credentials')
@@ -164,3 +169,5 @@ class CampaignCreateTrackWithTextLesson:
             url = cell.value
             driver.get(url)
     
+    
+ 

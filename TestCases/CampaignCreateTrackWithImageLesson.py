@@ -4,6 +4,7 @@ Created on 07-Mar-2018
 @author: dattatraya
 '''
 import os.path
+import traceback
 
 from BaseTestClass import driver
 from selenium.webdriver.common.by import By
@@ -11,9 +12,10 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import xlrd
 
+from CampaignPageElements import CampPage
 from CreateLessonDifferentLessons import CreateLessonDifferentLessons
 from CreateTrackComman import CreateTrackComman
-from CampaignPageElements import CampPage
+
 
 class CampaignCreateTrackWithImageLesson:
     
@@ -155,7 +157,12 @@ class CampaignCreateTrackWithImageLesson:
             obj2=CampaignCreateTrackWithImageLesson()
             obj2.campWithTrackImagelesson(campaignTitle, campDescription, trackName, actualSuccessMessage)
             
-          
+         
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception
+         
         finally:  
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)
@@ -163,3 +170,4 @@ class CampaignCreateTrackWithImageLesson:
             driver.get(url)
     
     
+ 

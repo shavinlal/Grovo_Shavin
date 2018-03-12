@@ -4,6 +4,7 @@ Created on 08-Mar-2018
 @author: dattatraya
 '''
 import os.path
+import traceback
 
 from BaseTestClass import driver
 from selenium import webdriver
@@ -14,6 +15,7 @@ import xlrd
 
 from CampaignPageElements import CampPage
 from CreateLessonDifferentLessons import CreateLessonDifferentLessons
+
 
 class CampaignTrackVideoDocumentQuestionsLessons:
     
@@ -334,6 +336,11 @@ class CampaignTrackVideoDocumentQuestionsLessons:
             
             obj2.campWithTrackVidLessonDocLessonQueLesson(campaignTitle, campDescription, titleOfTrack, actualSuccessMessage, ownDuration)     
           
+        except Exception as e:
+            traceback.print_exc()
+            print (e)
+            raise Exception  
+        
         finally:  
             second_sheet = book.sheet_by_name('Login_Credentials')
             cell = second_sheet.cell(1,1)
@@ -341,3 +348,4 @@ class CampaignTrackVideoDocumentQuestionsLessons:
             driver.get(url)
     
     
+ 
