@@ -1,15 +1,16 @@
 '''
 Created on 27-Feb-2018
 
-@author: QA
+@author: dattatraya
 '''
 
 import time
-import traceback
+
 from BaseTestClass import driver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
+
 
 class CampPage:
     
@@ -116,3 +117,34 @@ class CampPage:
         
         driver.find_element_by_xpath(".//*[@id='input-campaign-attempts']").clear()
         driver.find_element_by_xpath(".//*[@id='input-campaign-attempts']").send_keys(str(numberOfAttempts))
+        
+        
+    def addTrackButton(self):
+        driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/section[2]/div[1]/div/button[2]").click()
+    
+    
+    def searchTracksAndSelect(self,trackName):
+        
+        wait=WebDriverWait(driver, 60)
+        wait.until(EC.visibility_of_element_located((By.XPATH,"//li[1]/div[1]")))
+        driver.find_element_by_xpath(".//*[@id='search-objectives-in-modal']").send_keys(trackName)
+        wait.until(EC.visibility_of_element_located((By.XPATH,"(//li/div[2]/h4[.='"+trackName+"']/../../div[1]/div)[1]")))
+        
+        driver.find_element_by_xpath("(//li/div[2]/h4[.='"+trackName+"']/../../div[1]/div)[1]").click()
+        
+    def addToCampaignTrack(self):
+        
+        driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[3]/button[1]").click()
+        
+    
+    def firstTrackInGrid(self):
+        return driver.find_element_by_xpath("//li[1]/div/span[2]/em").text
+    
+    def setOwnDuration(self,ownDuration):
+        wait=WebDriverWait(driver, 60)
+        days=wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='input-campaign-duration']")))
+    
+        days.send_keys(str(ownDuration))
+        
+        
+        
