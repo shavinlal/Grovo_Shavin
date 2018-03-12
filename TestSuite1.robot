@@ -5,8 +5,8 @@ Library   TestCases/BaseTestClass.py
 
 #Fucntions for Test Bed cleanup
 Library   TestCases/Delete_Tags_Attributes_Lessons.py
-Library   TestCases/DeactivateUser.py
-Library   TestCases/UpdatingUserDetails.py
+#Library   TestCases/DeactivateUser.py
+#Library   TestCases/UpdatingUserDetails.py
 
 #Functions to create Lessons
 Library   TestCases/BlankLessonOne.py
@@ -55,11 +55,11 @@ TC0 - User Login
 TC1 - Delete_Tags_Attributes_Lessons
     Main Delete All
   
-TC - DeactivateUser
-    Created User Deactivation
+#TC - DeactivateUser
+ #   Created User Deactivation
 
-TC - UpdatingUserDetails
-    Updation Of Excel Values
+#TC - UpdatingUserDetails
+ #   Updation Of Excel Values
     
 #Test cases for Lesson creation
 TC2 - BlankLessonOne
