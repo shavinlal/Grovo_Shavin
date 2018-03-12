@@ -8,8 +8,6 @@ import xlrd
 import time
 import os.path
 from BaseTestClass import driver
-
-
 class CreateCreator():
     
         
@@ -146,7 +144,7 @@ class CreateCreator():
         
         ele =driver.find_element_by_xpath("html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr/td[1]").text
         if(ele==FirstName):
-         print("Created User Verified")
+            print("Created User Verified")
         else:
             print ""
             raise Exception   
@@ -194,20 +192,21 @@ class CreateCreator():
         print "New Password is entered :"+NewPassword
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[1]/div[2]/button")))
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[1]/div[2]/button").click()
+        time.sleep(4)
         wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
         print "Home Page is Loaded"
-        
         print "Creator Page Verification"
-        driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[1]/div[2]/button").click()
-        if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]").is_displayed():
-            if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[2]").is_displayed():
-                if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]").is_displayed():
-                    if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[4]").is_displayed():
-                        print "User with Creator Role is able to login and HOME,LIBRARY,CREATE and CAMPAIGN is displaying.."
-                        
-                    else:
-                        print"Home page not displayed"
-        
+        driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]").click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]")))
+        Home =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]")
+        Library = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[2]")
+        Create = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]")
+        campaign = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[4]")
+        if (Home.is_displayed() and Library.is_displayed() and (Create.is_displayed()) and campaign.is_displayed()):
+            print"Home page for Creator displayed"             
+        else:
+            print"Home page for Creator not displayed"
+            raise Exception 
         
         print "Sign out "
         ele =driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[1]/nav/div[2]/a/span[3]")
@@ -272,7 +271,8 @@ class CreateCreator():
         time.sleep(5)
            
         #again login
-        
+    
+    
         
     def createCreatorUserAndValidation(self):
         try :
@@ -293,3 +293,4 @@ class CreateCreator():
             driver.get(HomeURL)
             
             print "Home Page Loaded"
+            
