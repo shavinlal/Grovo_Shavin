@@ -22,6 +22,7 @@ class CreateTrackComman:
         print "Clicking on Lessons button from side menu"
         driver.find_element_by_xpath("//a[@href='/create/lessons']").click()
         
+        wait.until(EC.visibility_of_element_located((By.XPATH,"//a[@href='/create/tracks']")))
         print "Clicking on Track button from side menu"
         driver.find_element_by_xpath("//a[@href='/create/tracks']").click()
         
