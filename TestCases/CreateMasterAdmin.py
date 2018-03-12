@@ -16,10 +16,6 @@ import xlrd
 from BaseTestClass import driver
 
 class CreateMasterAdmin():
-    
-   
-    
-        
     def createMasterAdminuser(self):
         
         print "Reading data from excel sheet"
@@ -201,19 +197,29 @@ class CreateMasterAdmin():
         wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
         print "Home Page is Loaded"
         print "Home Page Verification For Master Admin"
-        ad =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/a")
-        driver.execute_script('arguments[0].click()',ad)
-        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]")))
-        if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]").is_displayed():
-            if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[2]").is_displayed():
-                if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]").is_displayed():
-                    if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[4]").is_displayed():
-                        if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]").is_displayed():
-                            if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]").is_displayed():
-                                                                    print "User with Creator Role is able to login and HOME,LIBRARY,CREATE,CAMPAIGN,REPORTS,ADMIN,USERS,GROUPS,ROLES,USER ATTRIBUTES,TAGS,CONTENT MANAGER,INTEGRATIONS,BRANDING is displaying.."
+        driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/a").click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]/a[2]")))
+        Home =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]")
+        Library = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[2]")
+        Create = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]")
+        campaign = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[4]")
+        Reports = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]")
+        Admin =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]")
+        Users =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[1]/a")
+        Groups =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[2]/a")
+        Roles = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[3]/a")
+        Attributes =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[4]/a")
+        Tags = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[5]/a")
+        ContentManager =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[6]/a")
+        Integrations =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[7]/a")
+        Branding =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/div/ul/li[8]/a")
+        if (Home.is_displayed() and Library.is_displayed() and (Create.is_displayed()) and campaign.is_displayed() and Reports.is_displayed() and Admin.is_displayed() and Users.is_displayed() and Groups.is_displayed() and Roles.is_displayed() and Attributes.is_displayed() and Tags.is_displayed() and ContentManager.is_displayed() and Integrations.is_displayed() and Branding.is_displayed()):
+           
+            print "User with Creator Role is able to login and HOME,LIBRARY,CREATE and CAMPAIGN is displaying.."
                         
-                    else:
-                        print"Home page not displayed"
+        else:
+            print"Home page not displayed"
+            raise Exception 
         
         
         ele =driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[1]/nav/div[2]/a/span[3]")
@@ -296,4 +302,3 @@ class CreateMasterAdmin():
             
             print "Home Page Loaded"
        
-      
