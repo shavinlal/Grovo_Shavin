@@ -758,7 +758,7 @@ class CampaignTrackFourLessonsOne:
         print "Clicking on save & exit button"
         elements.saveAndExitButton()
         
-        #verifying success message
+        '''#verifying success message
         print "\nVerifying success message"
         
         if elements.successMessage()==actualSuccessMessage:
@@ -766,7 +766,7 @@ class CampaignTrackFourLessonsOne:
         else:
             print "Success message is not displayed properly"
             raise Exception
-        
+        '''
         #Verifying campaign detail page is displayed
         print "\nVerifying campaign detail page is displayed"
         
@@ -774,6 +774,17 @@ class CampaignTrackFourLessonsOne:
             print "Campaign detail page is displayed"
         else:
             print "Campaign detail page is not displayed"
+            raise Exception
+        
+        
+        #verifying in Campaigns displayed in Campaigns grid
+        elements.searchingForlesson(campaignTitle)
+        
+        if elements.actualCampTitleINGrid()==campaignTitle:
+            print "Campaign '"+campaignTitle+"' displayed in Grid"
+        
+        else:
+            print "Campaign is not displayed in Grid"
             raise Exception
         
         print "\n----Text Execution Completed----\n"    
@@ -895,3 +906,5 @@ class CampaignTrackFourLessonsOne:
             url = cell.value
             driver.get(url)
     
+ 
+
