@@ -97,6 +97,8 @@ class CampPage:
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/div[2]/button[2]").click()
         
     def campaignDetailPageHeaderText(self):
+        wait=WebDriverWait(driver, 60)
+        wait.until(EC.element_to_be_clickable((By.XPATH,".//*[@id='content']/div/div[3]/div[2]/div/header/div[1]/h1/em")))
         return driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/header/div[1]/h1/em").text
     
     def makeThisAsAGradedCampaign(self):
@@ -145,6 +147,31 @@ class CampPage:
         days=wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='input-campaign-duration']")))
     
         days.send_keys(str(ownDuration))
+       
+       
+    def searchingForlesson(self,campName):
+        wait=WebDriverWait(driver, 60)
+        campButton=wait.until(EC.element_to_be_clickable((By.XPATH,".//*[@id='content']/div/div[3]/div[2]/div/div[1]/a")))
+         
+        campButton.click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='search-campaigns-in-table']")))
+        driver.find_element_by_xpath(".//*[@id='search-campaigns-in-table']").send_keys(campName)
+        
+        wait.until(EC.visibility_of_element_located((By.XPATH,"(//tbody/tr/td[1]/a[.='"+campName+"'])[1]")))
+        
+    def actualCampTitleINGrid(self):
+        return driver.find_element_by_xpath("(//tbody/tr/td[1]/a)[1]").text
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         
         
         
