@@ -3,6 +3,7 @@ Created on 22-Feb-2018
 
 @author: Sheethu C
 '''
+
 from operator import contains
 import os.path
 import time
@@ -197,32 +198,36 @@ class CreateLearnerAdministrator():
         print "New Password is entered :"+NewPassword
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[1]/div[2]/button")))
         driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[1]/div[2]/button").click()
-        wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]")))
+        wait.until(EC.visibility_of_element_located((By.ID,"global-header-search")))
+        #wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]")))
         print "Home Page is Loaded"
-        
-        Expand =driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]")
-        driver.execute_script('arguments[0].click()',Expand)
-        print "Expand Button clicked"
-        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]")))
+        time.sleep(4)
         print "waiting For Admin"
         Admin =driver.find_element_by_xpath("//a[@href='/admin/tags']")
         driver.execute_script('arguments[0].click()',Admin)
         print "Clicked on Admin"
-        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]/div/ul/li[1]")))
-        #driver.execute_script('arguments[0].click()',Admin)
-        if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]").is_displayed():
-            if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[2]").is_displayed():
-                if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]").is_displayed():
-                    if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[4]").is_displayed():
-                        if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]").is_displayed():
-                            if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]/div/ul/li[1]").is_displayed():  
-                                if driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]/div/ul/li[2]").is_displayed():    
-                                    print "User with Creator Role is able to login and HOME,LIBRARY,CREATE, CAMPAIGN, REPORTS,admin And Admin-Tags ANd Admin -Content Manager is displaying.."
+        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]/div/ul/li[2]/a")))
+        print "Home Page is Loaded"
+        
+        #driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/a").click()
+        wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]")))
+        Home =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[1]")
+        Library = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[2]")
+        Create = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[3]")
+        campaign = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[4]")
+        Admin = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]")
+        print "main found"
+        Tags = driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]/div/ul/li[1]/a")
+        print "tags"+Tags.text
+        ContentManager =driver.find_element_by_xpath("html/body/div/div/div[3]/div[1]/div/nav/div/div[2]/div[5]/div/ul/li[2]/a")
+        print "content"
+        if ((Home.is_displayed()) and (Library.is_displayed()) and (Create.is_displayed()) and (campaign.is_displayed()) and (Admin.is_displayed()) and (Tags.is_displayed()) and (ContentManager.is_displayed())):
+           
+            print "User with Creator Role is able to login and HOME,LIBRARY,CREATE and CAMPAIGN is displaying.."
                         
-                    else:
-                        print"Home page not displayed"
-        
-        
+        else:
+            print"Home page not displayed"
+            raise Exception 
         
         print "Sign out "
         ele =driver.find_element_by_xpath(".//*[@id='content']/div/div[1]/div[1]/nav/div[2]/a/span[3]")
@@ -306,6 +311,6 @@ class CreateLearnerAdministrator():
             driver.get(HomeURL)
             
             print "Home Page Loaded"
+
+
        
-        
-     
