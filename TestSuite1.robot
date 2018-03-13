@@ -55,11 +55,11 @@ TC0 - User Login
 TC1 - Delete_Tags_Attributes_Lessons
     Main Delete All
   
-#TC - DeactivateUser
- #   Created User Deactivation
+TC - DeactivateUser
+   Created User Deactivation
 
-#TC - UpdatingUserDetails
- #   Updation Of Excel Values
+TC - UpdatingUserDetails
+   Updation Of Excel Values
     
 #Test cases for Lesson creation
 TC2 - BlankLessonOne
