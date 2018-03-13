@@ -1,4 +1,6 @@
 *** Settings ***
+
+Library           TestCases/BaseTestClass.py
 Library           TestCases/TeachASkill.py
 Library           TestCases/LessonExplainAConcept.py
 Library           TestCases/IntroduceATopic.py
@@ -9,6 +11,9 @@ Library           TestCases/BlankLessonFiveTwo.py
 Library           TestCases/BlankLessonFive.py
 
 *** Test Cases ***
+TC0 - User Login
+    User Login
+
 TeachASkill
     Teach A Skill Main
 
