@@ -121,14 +121,14 @@ TC19 - CreateCampaignForTxtVidQuesLesson
 TC20 - CreateCampaignForVidDocQueLesson
     Create Campaign With Lesson Video Document Question
 
-#TC21 - CreateCampaignForFourLessonsOne
- #   Create Campaign With Four Lessons One
+TC21 - CreateCampaignForFourLessonsOne
+    Create Campaign With Four Lessons One
 
 TC22 - CreateCampaignForFourLessonsTwo
     Create Campaign With Four Lessons Two
 
-#TC23 - CreateCampaignForFourLessonsThree
-   # Create Campaign With Four Lessons Three
+TC23 - CreateCampaignForFourLessonsThree
+    Create Campaign With Four Lessons Three
 
 TC24 - CreateCampaignForTextAndImageLesson
     Create Campaign With Text Lesson Image Lesson
@@ -136,25 +136,25 @@ TC24 - CreateCampaignForTextAndImageLesson
 TC25 - CreateCampaignForImageAndVideoLesson
     Create Campaign With Image Lesson Video Lesson
 
-#TC26 - CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons
- #   Create Campaign With Three Lessons
+TC26 - CreateCampaignForQuesLesssonAllCards1timeAllCards2TimeLessons
+    Create Campaign With Three Lessons
 
 TC27 - CreateCampaignForVideoLsnDocLsQuestionLes
     Create Campaign With Video Lesson Document Lesson Question Lesson  
    
-#TC28 - CampaignPageDisplay
- #   Campaigns Page Display Main
+TC28 - CampaignPageDisplay
+    Campaigns Page Display Main
 
 
-#Test cases for User Creation with standard roles
-#TC29 - CreateCreator
- #   Create Creator User And Validation
+Test cases for User Creation with standard roles
+TC29 - CreateCreator
+    Create Creator User And Validation
     
-#TC30 - CreateLearner
- #   Create Learner User And Validation
+TC30 - CreateLearner
+    Create Learner User And Validation
     
-#TC31 - CreateLearnerAdministrator
- #   Create Learner Admin User And Validation
+TC31 - CreateLearnerAdministrator
+    Create Learner Admin User And Validation
     
-#TC32 - CreateMasterAdmin
- #   Create Master Admin User And Validation 
+TC32 - CreateMasterAdmin
+    Create Master Admin User And Validation 
