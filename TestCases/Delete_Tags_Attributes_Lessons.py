@@ -61,32 +61,32 @@ class Delete_Tags_Attributes_Lessons:
         wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[2]/div/div")))
         time.sleep(3)
         
-    def deactivateuser(self):
-        for i in range(5):
-            print "Reading data from excel sheet"
-            book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
-            sheet1=book.sheet_by_name('API testing')
-            print("Fetching the LastName from Excel Sheet\n")
-            #Read from Excel to search
-            cell1 = sheet1.cell(i+1,1)
-            searchlastName = cell1.value
-            #Clicking on Admin Menu from Grovo Application
+#     def deactivateuser(self):
+#         for i in range(5):
+#             print "Reading data from excel sheet"
+#             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
+#             sheet1=book.sheet_by_name('API testing')
+#             print("Fetching the LastName from Excel Sheet\n")
+#             #Read from Excel to search
+#             cell1 = sheet1.cell(i+1,1)
+#             searchlastName = cell1.value
+#             #Clicking on Admin Menu from Grovo Application
             
-            driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/a").click()
-            wait=WebDriverWait(driver,80)
-            wait.until(EC.visibility_of_element_located((By.ID,"search-users")))
-            driver.find_element_by_id("search-users").send_keys(searchlastName)
-            wait=WebDriverWait(driver,80)
-            #To click on FirstName link
-            wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr[1]")))
-            driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr/td[1]/a").click()
-            wait=WebDriverWait(driver,80)
-            driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/header/div/button").click()
-            wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/button[1]")))
-            driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/button[1]").click()  
-            wait.until(EC.visibility_of_element_located((By.ID,"search-users")))
-            driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
-            print "All Created users are Deactivated"
+#             driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[2]/div[6]/a").click()
+#             wait=WebDriverWait(driver,80)
+#             wait.until(EC.visibility_of_element_located((By.ID,"search-users")))
+#             driver.find_element_by_id("search-users").send_keys(searchlastName)
+#             wait=WebDriverWait(driver,80)
+#             #To click on FirstName link
+#             wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr[1]")))
+#             driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/div/div[4]/table/tbody/tr/td[1]/a").click()
+#             wait=WebDriverWait(driver,80)
+#             driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[2]/div/header/div/button").click()
+#             wait.until(EC.visibility_of_element_located((By.XPATH,"html/body/div[2]/div/div/div[2]/div[2]/button[1]")))
+#             driver.find_element_by_xpath("html/body/div[2]/div/div/div[2]/div[2]/button[1]").click()  
+#             wait.until(EC.visibility_of_element_located((By.ID,"search-users")))
+#             driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
+#             print "All Created users are Deactivated"
                 
     def mainDeletetag(self):
         try:
@@ -192,7 +192,7 @@ class Delete_Tags_Attributes_Lessons:
             d.mainDeletetag()
             d.mainDelete_attribute()
             d.mainDeleteLessons()
-            d.deactivateuser()
+           # d.deactivateuser()
         finally:
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
             second_sheet = book.sheet_by_name('Login_Credentials')
