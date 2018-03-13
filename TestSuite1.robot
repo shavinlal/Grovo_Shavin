@@ -5,8 +5,8 @@ Library   TestCases/BaseTestClass.py
 
 #Fucntions for Test Bed cleanup
 Library   TestCases/Delete_Tags_Attributes_Lessons.py
-#Library   TestCases/DeactivateUser.py
-#Library   TestCases/UpdatingUserDetails.py
+Library   TestCases/DeactivateUser.py
+Library   TestCases/UpdatingUserDetails.py
 
 #Functions to create Lessons
 Library   TestCases/BlankLessonOne.py
