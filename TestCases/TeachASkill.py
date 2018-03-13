@@ -15,6 +15,7 @@ import xlrd
 from BaseTestClass import WebDriverWait
 from BaseTestClass import driver
 import traceback
+from BaseTestClass import BaseTestClass
 
 class TeachASkill:
     
@@ -543,6 +544,7 @@ class TeachASkill:
             print "Lesson is displayed in Grid ::"+lesson_title_TeachASkill
         else:
             print "Lesson not displaying in grid"
+            raise Exception
         
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
         
@@ -551,20 +553,24 @@ class TeachASkill:
             obj1 = TeachASkill()
             obj1.teachASkills()
             obj1.publishLesson()
-        
+            print "TEST CASE EXECUTION SUCCESSFULLY COMPLETED"
         except Exception as e:
             traceback.print_exc()
             print (e)
             raise Exception
             
         finally:
-            print "clicking on Home"
+            #print "clicking on Home"
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
             first_sheet = book.sheet_by_name('Login_Credentials')
-            print("Fetching the Attribute Name from Excel Sheet\n")
+            #print("Fetching the Attribute Name from Excel Sheet\n")
             # read a cell
             cell = first_sheet.cell(1,1)
             HomeURL = cell.value
-            print HomeURL
+            #print HomeURL
             driver.get(HomeURL)
-            print "Home Page Loaded"
+            #print "Home Page Loaded"
+        
+     
+       
+
