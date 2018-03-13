@@ -29,8 +29,8 @@ BlankLessonTwo
 #BlankLessonTen
     #Blank Lesson Ten Main
 
-BlankLessonOne
-    Blank Lesson One Main
+#BlankLessonOne
+    #Blank Lesson One Main
 
 BlankLessonFiveTwo
     Blank Lesson Five Two Main
