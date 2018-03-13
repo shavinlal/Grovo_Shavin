@@ -30,7 +30,7 @@ BlankLessonTen
     Blank Lesson Ten Main
 
 BlankLessonOne
-    #Blank Lesson One Main
+    Blank Lesson One Main
 
 #BlankLessonFiveTwo
    # Blank Lesson Five Two Main
