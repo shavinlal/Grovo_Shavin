@@ -15,6 +15,7 @@ import xlrd
 from BaseTestClass import WebDriverWait
 from BaseTestClass import driver
 import traceback
+from BaseTestClass import BaseTestClass
 
 class LessonExplainAConcept:
     
@@ -68,7 +69,7 @@ class LessonExplainAConcept:
         exTitleCardContent = cell1.value
         
         actualTitleCardContent = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/h1/textarea").text
-        print actualTitleCardContent
+       
         
         if (exTitleCardContent == actualTitleCardContent):
             print "The title card label is displaying as expected"+" "+'"'+exTitleCardContent+'"'
@@ -211,10 +212,11 @@ class LessonExplainAConcept:
         
         actualThirdCardContent = driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/span/span/span").text
         
-        if (exThirdCardContent == actualThirdCardContent):
+        if (exThirdCardContent in actualThirdCardContent):
             print "The Fourth card content is displaying as expected"
         else:
             print "Failed to find the expected content in Fourth card" 
+            raise Exception
                 
         # Going to click on Fifth card
         print "Clicking on Fifth card"
@@ -281,10 +283,11 @@ class LessonExplainAConcept:
         cell18= first_sheet.cell(25,0)
         exFifthCardContent = cell18.value
       
-        if(exFifthCardContent == actualFifthCradContent):
+        if(exFifthCardContent in actualFifthCradContent):
             print "The Sixth card content is displaying as expected"
         else:
-            print "Failed to find the Sixth card expected content"
+            print "Failed to find the expected content in Sixth card"
+            raise Exception
             
     
         # Going to click on Seventh card
@@ -343,10 +346,11 @@ class LessonExplainAConcept:
     
         actualSeventhCradContent1= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[2]/div/div/div/div/div/div/div/div[2]/div/div/div/div/div/div/span/span/span").text
         
-        if(exSeventhCardContent1 == actualSeventhCradContent1):
+        if(exSeventhCardContent1 in actualSeventhCradContent1):
             print "The Eightth card content is displaying as expected"
         else:
             print "Failed to find the expected content in Eightth card" 
+            raise Exception
         
         # Clicking on Nineth card
         print "Clicking on Nineth card"
@@ -509,12 +513,13 @@ class LessonExplainAConcept:
 
         if driver.find_element_by_xpath("(//tbody/tr/td[2]/a[.='"+lesson_title_ExplainAConcept+"'])[1]").is_displayed():
             print "Lesson is displayed in Grid ::"+lesson_title_ExplainAConcept
+            
         else:
             print "Lesson not displaying in grid"
-        
+            raise Exception
         driver.find_element_by_xpath(".//*[@id='content']/div/div[3]/div[1]/div/nav/div/div[4]").click()
         
-        print "TEST CASE EXECUTED SUCCESSFULLY COMPLETED"
+        
     
     
     def lessonExplainAConceptMain(self): 
@@ -523,7 +528,7 @@ class LessonExplainAConcept:
             obj1 = LessonExplainAConcept()
             obj1.lessonExplainAConcepts(10)
             obj1.publishLesson()
-        
+            print "TEST CASE EXECUTION SUCCESSFULLY COMPLETED"
         except Exception as e:
             traceback.print_exc()
             print (e)
@@ -532,11 +537,61 @@ class LessonExplainAConcept:
         finally:    
             book=xlrd.open_workbook(os.path.join('TestData.xlsx'))
             first_sheet = book.sheet_by_name('Login_Credentials')
-            print("Fetching the Attribute Name from Excel Sheet\n")
+            # print("Fetching the Attribute Name from Excel Sheet\n")
             
             # read a cell
             cell = first_sheet.cell(1,1)
             HomeURL = cell.value
-            print HomeURL
+            #print HomeURL
             driver.get(HomeURL)
-            print "Home Page Loaded"
+            #print "Home Page Loaded"
+
+     
+       
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
+            
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
