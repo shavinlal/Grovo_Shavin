@@ -318,23 +318,23 @@ class BlankLessonFive:
         print "Clicking on READY TO PUBLISH button"
          
         
-        #wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]")))
+        wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]")))
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[3]/div[1]/div[3]/div[3]/div/div[1]/section[3]/div/button[1]").click()
         print "Clicking on PUBLISH button"
         
-        print "Validating the success message after publish"
-        wait=WebDriverWait(driver, 60) 
+        #print "Validating the success message after publish"
+        #wait=WebDriverWait(driver, 60) 
         #wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]"))) 
-        actual_success_message= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[2]/div/div/span[2]").text
-        expected_success_message= "You have successfully published \"" + lesson_title + "\""; 
+        #actual_success_message= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[2]/div/div/span[2]").text
+        #expected_success_message= "You have successfully published \"" + lesson_title + "\""; 
         
-        if(expected_success_message==actual_success_message):
+        #if(expected_success_message==actual_success_message):
             
-            print "The success message is displaying as"+ " "+expected_success_message
+            #print "The success message is displaying as"+ " "+expected_success_message
             
-        else:
+        #else:
             
-            print "The success message is not displaying as expected"
+            #print "The success message is not displaying as expected"
             
         driver.find_element_by_xpath(".//*[@id='content']/div/div/div[3]/div[1]/div/div[2]/div[1]/a").click()
         print "Clicking on EXIT button"
