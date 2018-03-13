@@ -26,8 +26,8 @@ TC0 - User Login
 BlankLessonTwo
     Blank Lesson Two Main
 
-BlankLessonTen
-    Blank Lesson Ten Main
+#BlankLessonTen
+    #Blank Lesson Ten Main
 
 BlankLessonOne
     Blank Lesson One Main
