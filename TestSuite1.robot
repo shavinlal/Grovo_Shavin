@@ -23,8 +23,8 @@ TC0 - User Login
 #LessonExplainAConcept
     #Lesson Explain A Concept Main
 
-BlankLessonTwo
-    Blank Lesson Two Main
+#BlankLessonTwo
+    #Blank Lesson Two Main
 
 #BlankLessonTen
     #Blank Lesson Ten Main
