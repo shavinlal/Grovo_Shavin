@@ -324,7 +324,7 @@ class BlankLessonFive:
         
         print "Validating the success message after publish"
         wait=WebDriverWait(driver, 60) 
-        wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]"))) 
+        #wait.until(EC.visibility_of_element_located((By.XPATH,".//*[@id='content']/div/div/div[2]/div/div/span[2]"))) 
         actual_success_message= driver.find_element_by_xpath(".//*[@id='content']/div/div/div[2]/div/div/span[2]").text
         expected_success_message= "You have successfully published \"" + lesson_title + "\""; 
         
