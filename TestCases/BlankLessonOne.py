@@ -187,7 +187,7 @@ class BlankLessonOne:
         #expected_success_message= "You have successfully published \"" + lesson_title + "\""; 
         
         #if(expected_success_message==actual_success_message):
-            print "The success message is displaying as"+ " "+expected_success_message
+            #print "The success message is displaying as"+ " "+expected_success_message
        # else:
           #  print "The success message is not displaying as expected"
             
