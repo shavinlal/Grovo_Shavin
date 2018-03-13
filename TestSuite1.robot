@@ -7,6 +7,8 @@ Library   TestCases/BaseTestClass.py
 #Library   TestCases/BlankLessonOne.py
 #Library   TestCases/LessonExplainAConcept.py
 Library   TestCases/TeachASkill.py
+Library   TestCases/TeachASkill.py
+
 
 
 
@@ -23,10 +25,8 @@ TC0 - User Login
     
 TC4 - TeachASkill
     Teach A Skill Main
-
-    
-
-
+TC4 - TeachASkill
+    Teach A Skill Main
 
 
 
