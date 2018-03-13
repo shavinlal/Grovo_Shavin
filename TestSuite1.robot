@@ -23,17 +23,17 @@ IntroduceATopic
 LessonExplainAConcept
     Lesson Explain A Concept Main
 
-#BlankLessonTwo
-    #Blank Lesson Two Main
+BlankLessonTwo
+    Blank Lesson Two Main
 
-#BlankLessonTen
-    #Blank Lesson Ten Main
+BlankLessonTen
+    Blank Lesson Ten Main
 
-#BlankLessonOne
-    #Blank Lesson One Main
+BlankLessonOne
+    Blank Lesson One Main
 
-#BlankLessonFiveTwo
-    #Blank Lesson Five Two Main
+BlankLessonFiveTwo
+    Blank Lesson Five Two Main
 
-#BlankLessonFive
-    #Blank Lesson Five Main
+BlankLessonFive
+    Blank Lesson Five Main
