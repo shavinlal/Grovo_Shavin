@@ -10,7 +10,7 @@
 -  hourly:
 -    triggers:
 -      - schedule:
--          cron: "53 12 * * *"
+-          cron: "54 12 * * *"
 -          filters:
 -            branches:
 -              #only:
