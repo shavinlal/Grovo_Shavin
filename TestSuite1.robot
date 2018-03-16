@@ -11,7 +11,7 @@ Library           TestCases/IntroduceATopic.py
 Library           TestCases/BlankLessonTwo.py
 Library           TestCases/BlankLessonTen.py
 Library           TestCases/BlankLessonOne.py
-Library          TestCases/BlankLessonFiveTwo.py
+Library           TestCases/BlankLessonFiveTwo.py
 Library           TestCases/BlankLessonFive.py
 Library           TestCases/DeleteLesson.py
 
@@ -31,29 +31,29 @@ TC0 - User Login
 
 
 
-#TeachASkill
-    #Teach A Skill Main
+TeachASkill
+    Teach A Skill Main
 
-#IntroduceATopic
-    #Introduce A Topic Main
+IntroduceATopic
+    Introduce A Topic Main
 
-#LessonExplainAConcept
-    #Lesson Explain A Concept Main
+LessonExplainAConcept
+    Lesson Explain A Concept Main
 
-#BlankLessonTwo
-    #Blank Lesson Two Main
+BlankLessonTwo
+    Blank Lesson Two Main
 
-#BlankLessonTen
-    #Blank Lesson Ten Main
+BlankLessonTen
+    Blank Lesson Ten Main
 
-#BlankLessonOne
-    #Blank Lesson One Main
+BlankLessonOne
+    Blank Lesson One Main
 
 #BlankLessonFiveTwo
-   # Blank Lesson Five Two Main
+    #Blank Lesson Five Two Main
 
-#BlankLessonFive
-    #Blank Lesson Five Main
+BlankLessonFive
+    Blank Lesson Five Main
     
 DeleteLesson
     Main Delete
