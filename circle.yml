@@ -1,4 +1,4 @@
-  version: 2
+  version: 1
   commit-workflow:
     jobs:
       build:
@@ -8,7 +8,7 @@
   scheduled-workflow:
     triggers:
       - schedule:
-          cron: "17 15 * * *"
+          cron: "19 15 * * *"
           filters:
             branches:
               only: try-schedule-workflow
