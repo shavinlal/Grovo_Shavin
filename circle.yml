@@ -2,12 +2,13 @@
   commit-workflow:
     jobs:
       build:
-          - pip install -r requirements.txt
-          - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
+          test:
+              - pip install -r requirements.txt
+              - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
   scheduled-workflow:
     triggers:
       - schedule:
-          cron: "16 15 * * *"
+          cron: "17 15 * * *"
           filters:
             branches:
               only: try-schedule-workflow
