@@ -1,8 +1,8 @@
 *** Settings ***
 
-#Library           TestCases/BaseTestClass.py
-#Library           TestCases/BasicInformationValidData_27.py
-#Library           TestCases/BasicInformationWithDirectRole_28.py
+Library           TestCases/BaseTestClass.py
+Library           TestCases/BasicInformationValidData_27.py
+Library           TestCases/BasicInformationWithDirectRole_28.py
 
 Library           TestCases/BaseTestClass.py
 Library           TestCases/TeachASkill.py
@@ -11,8 +11,9 @@ Library           TestCases/IntroduceATopic.py
 Library           TestCases/BlankLessonTwo.py
 Library           TestCases/BlankLessonTen.py
 Library           TestCases/BlankLessonOne.py
-#Library          TestCases/BlankLessonFiveTwo.py
+Library          TestCases/BlankLessonFiveTwo.py
 Library           TestCases/BlankLessonFive.py
+Library           TestCases/DeleteLesson.py
 
 *** Test Cases ***
 TC0 - User Login
@@ -39,17 +40,20 @@ TC0 - User Login
 #LessonExplainAConcept
     #Lesson Explain A Concept Main
 
-BlankLessonTwo
-    Blank Lesson Two Main
+#BlankLessonTwo
+    #Blank Lesson Two Main
 
-BlankLessonTen
-    Blank Lesson Ten Main
+#BlankLessonTen
+    #Blank Lesson Ten Main
 
-BlankLessonOne
-    Blank Lesson One Main
+#BlankLessonOne
+    #Blank Lesson One Main
 
 #BlankLessonFiveTwo
    # Blank Lesson Five Two Main
 
-BlankLessonFive
-    Blank Lesson Five Main
+#BlankLessonFive
+    #Blank Lesson Five Main
+    
+DeleteLesson
+    Main Delete
