@@ -6,15 +6,14 @@ general:
   artifacts:
     - "robot_results"
 workflows:
-  version: 1
+  version: 2
   hourly:
     triggers:
       - schedule:
-          cron: "5 13 * * *"
+          cron: "7 13 * * *"
           filters:
             branches:
               only:
-                - master
-                - beta
+                - shavinlal
     jobs:
       - test
