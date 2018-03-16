@@ -1,7 +1,9 @@
   version: 2
   commit-workflow:
     jobs:
-      - build 
+      - build
+          - pip install -r requirements.txt
+          - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
   scheduled-workflow:
     triggers:
       - schedule:
