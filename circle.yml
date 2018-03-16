@@ -1,3 +1,4 @@
+
 test:
   override:
       - pip install -r requirements.txt
@@ -10,11 +11,11 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "4 14 * * *"
+          cron: "5 14 * * *"
           filters:
             branches:
               only:
                 - master
                 - beta
-    run:
+    job:
       - test
