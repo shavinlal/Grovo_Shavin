@@ -11,8 +11,9 @@ workflows:
   version: 2
   hourly:
     triggers:
-      - schedule:"11 7 * * *"
-         filters:
+      - schedule:
+          cron: "18 7 * * *"
+          filters:
             branches:
               only:
                 - master
