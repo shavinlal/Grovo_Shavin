@@ -15,7 +15,7 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                #- master
                 - beta
     jobs:
       - test
