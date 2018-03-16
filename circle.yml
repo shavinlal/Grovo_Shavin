@@ -4,15 +4,15 @@ jobs:
        - date
        - pip install -r requirements.txt
        - pybot -n non-critical -d "robot_results" ./TestSuite1.robot
-  general:
-     artifacts:
-        - "robot_results"
+     general:
+       artifacts:
+         - "robot_results"
 workflows:
   version: 2
   hourly:
     triggers:
       - schedule:
-          cron: "43 13 * * *"
+          cron: "46 13 * * *"
           filters:
             branches:
               only:
