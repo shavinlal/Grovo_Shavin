@@ -6,16 +6,16 @@ test:
 general:
   artifacts:
     - "robot_results"
-#workflows:
-  #version: 2
-  #hourly:
-    #triggers:
-      #- schedule:
-          #cron: "7 13 * * *"
-          #filters:
-            #branches:
-              #only:
-                #- master
-               # - beta
-   # jobs:
-     # - test
+workflows:
+  version: 2
+  hourly:
+    triggers:
+      - schedule:
+          cron: "39 13 * * *"
+          filters:
+            branches:
+              only:
+                - master
+                - beta
+    jobs:
+      - test
