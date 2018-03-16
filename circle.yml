@@ -1,23 +1,20 @@
-jobs:
-  version :1
-  job1:
-     override:
-       - date
-       - pip install -r requirements.txt
-       - pybot -n non-critical -d "robot_results" ./TestSuite1.robot
-     general:
-       artifacts:
-         - "robot_results"
+test:
+  override:
+    - pip install -r requirements.txt
+    - pybot -n non-critical -d "robot_results" ./TestSuite1.robot
+general:
+  artifacts:
+    - "robot_results"
 workflows:
   version: 2
   hourly:
     triggers:
       - schedule:
-          cron: "50 13 * * *"
+          cron: "52 13 * * *"
           filters:
             branches:
               only:
                 - master
                 - beta
     jobs:
-      - job1
+      - test
