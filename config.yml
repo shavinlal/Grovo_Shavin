@@ -1,0 +1,13 @@
+workflows:
+  version: 2
+  hourly:
+    triggers:
+      - schedule:
+          cron: "2 12 * * *"
+          filters:
+            branches:
+              only:
+                - master
+                - beta
+    jobs:
+      - test
