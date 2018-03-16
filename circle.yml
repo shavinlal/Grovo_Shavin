@@ -17,10 +17,11 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "45 11 * * *"
+          cron: "52 11 * * *"
           filters:
             branches:
-              only:
-                - Grovo_Shavin
+              #only:
+                #- master
+                #- beta
     jobs:
       - test
