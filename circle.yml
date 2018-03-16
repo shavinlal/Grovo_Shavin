@@ -7,17 +7,17 @@ general:
   artifacts:
     - "robot_results"
     
-#workflows:
- # version: 2
-  #hourly:
-   # triggers:
-    #  - schedule:
-     #    filters:
-      #      branches:
-       #       only:
-        #        - master
-         #       - beta
-    #jobs:
-     # - test
+workflows:
+  version: 2
+  hourly:
+    triggers:
+      - schedule:"10 7 * * *"
+         filters:
+            branches:
+              only:
+                - master
+                - beta
+    jobs:
+      - test
       
       
