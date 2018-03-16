@@ -12,11 +12,3 @@ general:
   artifacts:
     - "robot_results"
     
-workflows:
-  version: 2
-  hourly:
-    triggers:
-      - schedule:
-          cron: "57 11 * * *"
-    jobs:
-      - test
