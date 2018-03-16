@@ -7,7 +7,7 @@ test:
     #- npm install -g newman
     #- newman run ./selenium/AutomationTestcase.postman_collection.json
     - pip install -r requirements.txt
-    - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./selenium
+    - pybot -n non-critical -d "robot_results" ./TestSuite1.robot
 general:
   artifacts:
     - "robot_results"
@@ -16,7 +16,7 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "10 12 * * *"
+          cron: "15 12 * * *"
           filters:
             branches:
               only:
