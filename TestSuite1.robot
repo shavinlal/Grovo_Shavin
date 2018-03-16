@@ -14,6 +14,7 @@ Library           TestCases/BlankLessonOne.py
 Library           TestCases/BlankLessonFiveTwo.py
 Library           TestCases/BlankLessonFive.py
 Library           TestCases/DeleteLesson.py
+Library           TestCases/ScormAndPowerPoint.py
 
 *** Test Cases ***
 TC0 - User Login
@@ -29,7 +30,8 @@ TC0 - User Login
     #BasicInformationWithDirectRole_28.Logincreateuser
     #BasicInformationWithDirectRole_28.Againuser Login
 
-
+Scorm_AND_Powerpoint
+    Uploadscorm And Powerpoint Main
 
 TeachASkill
     Teach A Skill Main
