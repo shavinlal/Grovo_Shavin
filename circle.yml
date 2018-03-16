@@ -1,5 +1,5 @@
 jobs:
-version :1
+  version :1
   job1:
      override:
        - date
