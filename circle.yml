@@ -7,8 +7,11 @@ general:
     - robot_results
 workflows:
   version: 2
-  hourly:
-    triggers:
-      - { schedule: { cron: '23 14 * * *', filters: { branches: { only: [master, beta] } } } }
-    jobs:
-      - test
+  hourly: null
+  triggers:
+    '-schedule':
+      cron: '27 14 * * *'
+      filters: { branches: { only: [master, beta] } }
+  jobs:
+    - test
+
