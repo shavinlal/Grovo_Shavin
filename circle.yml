@@ -8,19 +8,23 @@ test:
     #- newman run ./selenium/AutomationTestcase.postman_collection.json
     - pip install -r requirements.txt
     - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./selenium
-general:
-  artifacts:
-    - "robot_results"
-workflows:
-  version: 2
-  hourly:
-    triggers:
-      - schedule:
-          cron: "29 9 * * *"
-          filters:
-            branches:
-              only:
-                - master
-                - beta
-    jobs:
-      - test
+    - schedule:
+        cron: "36 9 * * *"
+    
+    
+#general:
+  #artifacts:
+    #- "robot_results"
+#workflows:
+  #version: 2
+  #hourly:
+    #triggers:
+      #- schedule:
+          #cron: "29 9 * * *"
+          #filters:
+            #branches:
+              #only:
+                #- master
+                #- beta
+    #jobs:
+      #- test
