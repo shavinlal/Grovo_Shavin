@@ -22,5 +22,5 @@ workflows:
               only:
                 - master
                 - beta
-   jobs:
+    jobs:
      - test
