@@ -11,16 +11,3 @@ test:
 general:
   artifacts:
     - "robot_results"
-workflows:
-  version: 2
-  hourly:
-    triggers:
-      - schedule:
-          cron: "12 11 * * *"
-          filters:
-            branches:
-              only:
-                - master
-                - beta
-    jobs:
-      - test
