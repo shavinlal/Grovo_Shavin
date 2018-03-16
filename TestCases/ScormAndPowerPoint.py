@@ -147,14 +147,7 @@ class ScormAndPowerPoint:
             #print "Home Page Loaded"
 
 
-if __name__ == '__main__':
-    
-    obj11= ScormAndPowerPoint()
-    obj12= BaseTestClass()
-    obj12.UserLogin()
-    obj11.uploadscormAndPowerpointMain()
-  
-    print "Test executed successfully"
+
            
         
         
