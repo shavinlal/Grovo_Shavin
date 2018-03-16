@@ -11,12 +11,12 @@ test:
 general:
   artifacts:
     - "robot_results"
- workflows:
+workflows:
   version: 2
   hourly:
     triggers:
       - schedule:
-          cron: "8 11 * * *"
+          cron: "12 11 * * *"
           filters:
             branches:
               only:
