@@ -17,5 +17,5 @@ workflows:
                 - master
                 - beta
     test:
-       jobs
-         - test
+      jobs
+        - test
