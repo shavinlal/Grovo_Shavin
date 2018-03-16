@@ -6,10 +6,12 @@ test:
     #- sudo apt-get install google-chrome-stable
     #- npm install -g newman
     #- newman run ./selenium/AutomationTestcase.postman_collection.json
-    - schedule:
-        cron: "36 9 * * *"
-    - pip install -r requirements.txt
-    - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./selenium
+    hourly:
+      triggers:
+      - schedule:
+          cron: "29 9 * * *"
+               - pip install -r requirements.txt
+               - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./selenium
 
     
     
