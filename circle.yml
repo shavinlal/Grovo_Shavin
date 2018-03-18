@@ -1,15 +1,10 @@
-
-jobs:
-   test:
-      override:
-        - run:
-             name: install dependencies
-             command: |
-                pip install -r requirements.txt
-        - run:
-              name: run tests
-              command: |
-                 pybot -n non-critical -d "robot_results" ./TestSuite1.robot
+test:
+  override:
+    - pip install -r requirements.txt
+    - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
+general:
+  artifacts:
+    - "robot_results"
 workflows:
   version: 2
   commit-workflow:
@@ -18,7 +13,7 @@ workflows:
   scheduled-workflow:
     triggers:
       - schedule:
-          cron: "17 15 * * *"
+          cron: "18 15 * * *"
           filters:
             branches:
               only: master
