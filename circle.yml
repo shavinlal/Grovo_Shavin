@@ -1,4 +1,4 @@
-version: 1
+version: 2
 jobs:
   test:
     override:
@@ -9,7 +9,7 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "29 14 * * *"
+          cron: "30 14 * * *"
           filters:
             branches:
               only:
