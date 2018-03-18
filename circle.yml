@@ -12,10 +12,12 @@ workflows:
   scheduled-workflow:
     triggers:
       - schedule:
-          cron: "6 16 * * *"
+          cron: "7 16 * * *"
           filters:
             branches:
-              only: shavinlal/Grovo_Shavin
+              only:
+                - master
+                - beta
 
     jobs:
       - test
