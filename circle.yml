@@ -6,11 +6,11 @@ general:
   artifacts:
     - "robot_results"
 workflows:
-  version: 1
+  version: 2
   hourly:
     triggers:
       - schedule:
-          cron: "34 13 * * *"
+          cron: "36 13 * * *"
           filters:
             branches:
               only:
