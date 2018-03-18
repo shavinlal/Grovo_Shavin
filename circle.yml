@@ -22,19 +22,10 @@
       
 version: 2
 jobs:
-  #build:
-    #docker:
-      #- image: circleci/<language>:<version TAG>
-    #steps:
-      #- checkout
-      #- run: <command>
   test:
-    steps:
-      - checkout
-      - run: |
-      pip install -r requirements.txt
-      pybot -n non-critical -d "robot_results" ./TestSuite1.robot
-            
+    override:
+       - pip install -r requirements.txt
+       - pybot -n non-critical -d "robot_results" ./TestSuite1.robot           
 workflows:
   version: 2
   build_and_test:
