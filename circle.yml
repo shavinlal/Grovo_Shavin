@@ -13,12 +13,12 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "1 15 * * *"
+          cron: "2 15 * * *"
           filters:
             branches:
               only:
                 - master
                 - beta
-    jobs:
+    run:
       - test
    
