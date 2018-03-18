@@ -8,12 +8,12 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "38 14 * * *"
+          cron: "42 14 * * *"
           filters:
             branches:
               only:
                 - master
-                - beta
+                #- beta
     jobs:
       - test
    
