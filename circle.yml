@@ -1,5 +1,5 @@
 test:
-    steps:
+    override:
       - run:
           name: install dependencies
           command: |
@@ -13,7 +13,7 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "58 14 * * *"
+          cron: "59 14 * * *"
           filters:
             branches:
               only:
