@@ -3,12 +3,12 @@ test:
   override:
     - pip install -r requirements.txt
     - pybot -n non-critical -d "robot_results" ./TestSuite1.robot
-workflows:
+Workflows:
   version: 2
   hourly:
     triggers:
       - schedule:
-          cron: "34 14 * * *"
+          cron: "36 14 * * *"
           filters:
             branches:
               only:
