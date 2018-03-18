@@ -25,7 +25,6 @@ jobs:
   build:
     docker:
       - image: circleci/node:4.8.2
-
   test:
     steps:
       - run:
@@ -39,7 +38,7 @@ workflows:
   hourly:
     triggers:
       - schedule:
-          cron: "14 14 * * *"
+          cron: "15 14 * * *"
           filters:
             branches:
               only:
