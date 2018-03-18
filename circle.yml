@@ -1,14 +1,14 @@
 jobs:
   test:
     override:
-       - pip install -r requirements.txt
-       - pybot -n non-critical -d "robot_results" ./TestSuite1.robot
+        pip install -r requirements.txt
+        pybot -n non-critical -d "robot_results" ./TestSuite1.robot
 workflows:
   version: 2
   hourly:
     triggers:
       - schedule:
-          cron: "42 14 * * *"
+          cron: "44 14 * * *"
           filters:
             branches:
               only:
