@@ -12,10 +12,10 @@ workflows:
   scheduled-workflow:
     triggers:
       - schedule:
-          cron: "3 16 * * *"
+          cron: "4 16 * * *"
           filters:
             branches:
-              only: try-schedule-workflow
+              only: try-scheduled-workflow
 
     jobs:
       - test
