@@ -8,7 +8,7 @@ workflows:
   version: 2
     triggers:
       - schedule:
-          cron: "16 5 * * *"
+          cron: "17 5 * * *"
           filters:
             branches:
               only:
