@@ -1,6 +1,5 @@
 jobs:
   test:
-    working_directory: ~/Grovo_Shavin
     override:
       - pip install -r requirements.txt
       - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
@@ -8,14 +7,14 @@ workflows:
   version: 2
     triggers:
       - schedule:
-          cron: "17 5 * * *"
+          cron: "20 5 * * *"
           filters:
             branches:
               only:
                 - master
                 - beta
     jobs:
-      - test
+      - test:
 
 
 
