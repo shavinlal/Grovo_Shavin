@@ -1,20 +1,23 @@
-jobs:
-  test:
-    override:
-      - pip install -r requirements.txt
-      - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
+test:
+  override:
+    - pip install -r requirements.txt
+    - pybot -n non-critical -d "robot_results" ./TestSuite1.robot
+general:
+  artifacts:
+    - "robot_results"
 workflows:
   version: 2
+  hourly:
     triggers:
       - schedule:
-          cron: "20 5 * * *"
+          cron: "21 5 * * *"
           filters:
             branches:
               only:
                 - master
                 - beta
     jobs:
-      - test:
+      - test
 
 
 
