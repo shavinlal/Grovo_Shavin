@@ -1,17 +1,15 @@
-version: 2.0
 jobs:
   test:
     working_directory: ~/Grovo_Shavin
     override:
-      #- pip install -r requirements.txt
-      #- pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
-      - run: echo "hello world"
+      - pip install -r requirements.txt
+      - pybot -n non-critical -d "robot_results" -o "../discard/output.xml" ./TestSuite1.robot
 workflows:
   version: 2
   scheduled-workflow:
     triggers:
       - schedule:
-          cron: "11 16 * * *"
+          cron: "6 5 * * *"
           filters:
             branches:
               only:
