@@ -1,4 +1,4 @@
-job:
+jobs:
   test:
     working_directory: ~/Grovo_Shavin
     override:
